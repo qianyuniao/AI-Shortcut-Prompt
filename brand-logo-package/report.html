@@ -1,0 +1,443 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AiShort 标志 · 全量技术报告</title><style>
+:root{--paper:#F5F8F7;--ink:#14171A;--primary:#0B6E62;--accent:#F2A33C;
+--line:#E2E8E7;--card:#FFFFFF;--muted:#5C6669;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+font-family:Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;font-size:15px;line-height:1.7;}
+.wrap{max-width:1160px;margin:0 auto;padding:40px 28px 80px;}
+header.top{display:flex;align-items:center;gap:18px;padding-bottom:8px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+header.top .mk{width:56px;height:56px;flex:0 0 56px;}
+h1{font-size:26px;margin:0;letter-spacing:-.4px;}
+.sub{color:var(--muted);font-size:14px;margin:2px 0 0;}
+h2{font-size:19px;margin:0 0 4px;letter-spacing:-.2px;}
+section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin:22px 0;}
+.sechead{display:flex;align-items:baseline;gap:10px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:18px;}
+.secnum{font-size:12px;font-weight:700;color:#fff;background:var(--primary);border-radius:20px;padding:2px 9px;}
+.note{color:var(--muted);font-size:13px;margin:0 0 14px;}
+.grid{display:grid;gap:16px;}
+.g2{grid-template-columns:repeat(2,1fr);} .g3{grid-template-columns:repeat(3,1fr);}
+.g4{grid-template-columns:repeat(4,1fr);} .g5{grid-template-columns:repeat(5,1fr);}
+.tile{border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;
+align-items:center;justify-content:center;gap:10px;background:var(--card);min-height:120px;}
+.tile .cap{font-size:12px;color:var(--muted);text-align:center;}
+.tile.light{background:#F5F8F7;} .tile.dark{background:#14171A;border-color:#14171A;}
+.tile.dark .cap{color:#93A0A3;} .tile.dark .wm{color:#fff;}
+.tile svg{max-width:100%;height:auto;}
+.wm{font-weight:650;letter-spacing:-.6px;}
+.kpi{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--card);}
+.kpi b{display:block;font-size:24px;letter-spacing:-.5px;color:var(--primary);}
+.kpi span{font-size:12px;color:var(--muted);}
+table{border-collapse:collapse;width:100%;font-size:13.5px;}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;}
+th{background:#F0F4F3;font-weight:650;}
+code{background:#F0F4F3;padding:1px 5px;border-radius:4px;font-size:12.5px;}
+pre{background:#F7FAF9;border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;
+font-size:12px;line-height:1.45;margin:8px 0;}
+.sw{display:flex;gap:0;border-radius:10px;overflow:hidden;border:1px solid var(--line);}
+.sw div{flex:1;height:70px;display:flex;align-items:flex-end;justify-content:center;
+font-size:11px;padding-bottom:6px;font-weight:600;}
+.mock{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;}
+.browser{background:#DEE3E6;padding:10px 12px 0;}
+.tab{display:inline-flex;align-items:center;gap:7px;background:#fff;border-radius:8px 8px 0 0;
+padding:7px 12px;font-size:12px;font-weight:600;}
+.bar{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);}
+.bar .links{margin-left:auto;display:flex;gap:16px;font-size:12px;color:var(--muted);}
+.phone{background:#1B1F22;border-radius:22px;padding:14px;}
+.phonepad{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:16px 10px 26px;}
+.appic{border-radius:14px;overflow:hidden;}
+.appname{font-size:10px;color:#C9D1D3;text-align:center;margin-top:4px;font-family:Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif}
+.cardbg{background:#fff;padding:22px;}
+.strip{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.hero{background:#14171A;padding:44px 34px;border-radius:12px;}
+.hero .t{color:#fff;font-size:30px;font-weight:650;letter-spacing:-1px;}
+.hero .s{color:#9BA7AA;font-size:14px;margin-top:8px;}
+.watermark{position:relative;background:#F5F8F7;}
+.watermark .bgmark{position:absolute;right:-30px;bottom:-50px;width:280px;opacity:.10;}
+.dont{opacity:.55;}
+.dont::after{content:"✕";color:#C0392B;font-weight:700;margin-left:8px;}
+ul{margin:6px 0 0 18px;padding:0;} li{margin:3px 0;}
+</style></head><body><div class="wrap">
+<header class="top"><div style="width:56px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-only : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-only-m-u23" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u23)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div><h1>AiShort 标志 · 全量技术报告</h1>
+<p class="sub">方向「切角卡片 · The Shortcut」v1.0 · 全部数值由 build.py 实时计算，零手写 · 自包含单文件</p></div></header>
+
+<section><div class="sechead"><span class="secnum">§0</span><h2>执行摘要</h2></div>
+<div class="grid g2" style="margin-bottom:18px">
+<div class="tile light" style="min-height:220px"><div style="width:180px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-only : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-only-m-u24" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u24)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div class="cap">主标（纯图形，1024 viewBox）</div></div>
+<div class="grid g2" style="align-content:start">
+<div class="kpi"><b>0.000%</b><span>6 项比例校验最大误差（整数比系统）</span></div>
+<div class="kpi"><b>5.74:1</b><span>主色 / 冷白底 对比度（AA 需 ≥4.5）</span></div>
+<div class="kpi"><b>16px</b><span>最小可用尺寸（实测去角 + 折片可辨）</span></div>
+<div class="kpi"><b>8.56%</b><span>点缀色占比（纪律 &lt;10%）</span></div></div></div>
+<p><b>概念</b>：把「从会用 AI 到用好 AI 的冗长试错」折成一张卡片的一次抄近道——斜边 452.5 短于直角路径 640，捷径不是比喻。<br>
+<b>几何</b>：单一圆角方形 + 一处 45° 切角 + 一个由切下三角镜像而来的折片；整数比系统，6 项比例误差 0.000%，折痕共享、双边留缝。<br>
+<b>色彩</b>：墨松绿 #0B6E62（脱离 OpenAI 亮绿与 AI 蓝紫渐变）+ 琥珀 #F2A33C 仅 8.56%，只用于「被点亮的捷径」。</p></section>
+
+<section><div class="sechead"><span class="secnum">§1</span><h2>概念与决策链</h2></div>
+<table><tr><th>部件</th><th>语义来源</th><th>承载语义（一元素多义）</th><th>删减测试</th></tr>
+<tr><td>圆角卡片</td><td>产品形态：5000+ 提示词以卡片呈现</td><td>提示词载体 / 库 / 一张可用的「答案」</td><td>删掉 → 无载体，故事不成立</td></tr>
+<tr><td>45° 切角</td><td>名字字义 Shortcut + 品类动作「一步到位」</td><td>抄近道 / 果断 / 缺口即入口</td><td>删掉 → 退化为普通圆角方块，无记忆点</td></tr>
+<tr><td>琥珀折片</td><td>被切下的那段路（沿切边镜像翻折）</td><td>被跳过的试错 / 书签标记 / 点亮的捷径</td><td>删掉 → 「捷径」失去被点亮的落点，且 mono 层级消失</td></tr></table>
+<p class="note" style="margin-top:14px"><b>内部落选方向（探索成本不摊给用户）</b>：
+①「⌘K 键」——与 Raycast 强撞且是 Apple 专用符号，弃；
+②「叠层双卡（copy 语义）」——与系统 copy 图标通用语汇重合，16px 下两卡糊成一团，弃；
+③「S 曲线字标」——字母锚定会削弱国际化（18 语言）场景的图形独立性，弃。</p></section>
+
+<section><div class="sechead"><span class="secnum">§2</span><h2>几何全量数学</h2></div>
+<div class="grid g2">
+<div><table><tr><th>常量</th><th>值</th><th>推导</th></tr>
+<tr><td>CANVAS</td><td>1024</td><td>128U</td></tr>
+<tr><td>U（基准）</td><td>8</td><td>8pt 模块网格</td></tr>
+<tr><td>B 卡片边长</td><td>640</td><td>80U；CANVAS:B = 8:5</td></tr>
+<tr><td>R 圆角</td><td>128</td><td>B/5 = 16U</td></tr>
+<tr><td>CUT 切角</td><td>320</td><td>B/2 = 40U</td></tr>
+<tr><td>GAP 折缝</td><td>48</td><td>3R/8 = 6U</td></tr>
+<tr><td>折片直角边</td><td>224</td><td>CUT − 2·GAP = 320 − 96</td></tr>
+<tr><td>斜边长</td><td>452.55</td><td>CUT·√2</td></tr>
+<tr><td>光学偏移 (dx,dy)</td><td>(20.53, -20.53)</td><td>(512 − 质心) × 0.40</td></tr>
+</table></div>
+<div><table><tr><th>比例</th><th>实测</th><th>目标</th><th>误差</th></tr>
+<tr><td>B:R</td><td>5.0000</td><td>5.0000</td><td>0.0000%</td></tr><tr><td>B:CUT</td><td>2.0000</td><td>2.0000</td><td>0.0000%</td></tr><tr><td>B:GAP</td><td>13.3333</td><td>13.3333</td><td>0.0000%</td></tr><tr><td>CANVAS:B</td><td>1.6000</td><td>1.6000</td><td>0.0000%</td></tr><tr><td>CUT:R</td><td>2.5000</td><td>2.5000</td><td>0.0000%</td></tr><tr><td>R:GAP</td><td>2.6667</td><td>2.6667</td><td>0.0000%</td></tr>
+</table>
+<table style="margin-top:12px"><tr><th>相切 / 对齐验证</th><th>条件</th><th>结果</th></tr>
+<tr><td>折痕共线</td><td>折片斜边 ⊂ 主卡切边 P1P2</td><td>✓ 同一线段（构造即成立，非目测）</td></tr>
+<tr><td>镜像等积</td><td>area(折片原三角) = area(缺口)</td><td>✓ 51200 = 51200（差 0）</td></tr>
+<tr><td>缝宽均匀</td><td>两直角边处缝宽 = GAP</td><td>✓ 48.000 = GAP</td></tr>
+<tr><td>折片在卡内</td><td>flap_in ⊂ rrect ∧ ¬notch</td><td>✓ 全部顶点在边界内</td></tr>
+<tr><td>圆角层级</td><td>全标仅 1 种圆角半径</td><td>✓ R = 128（≤3 级纪律）</td></tr></table></div></div>
+<div style="margin-top:16px;border:1px solid var(--line);border-radius:12px;overflow:hidden"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1404 1404" width="1404" height="1404" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect width="1404" height="1404" fill="#FBFCFC"/>
+<line x1="190" y1="190" x2="190" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="190" x2="1214" y2="190" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="254" y1="190" x2="254" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="254" x2="1214" y2="254" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="318" y1="190" x2="318" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="318" x2="1214" y2="318" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="382" y1="190" x2="382" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="382" x2="1214" y2="382" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="446" y1="190" x2="446" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="446" x2="1214" y2="446" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="510" y1="190" x2="510" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="510" x2="1214" y2="510" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="574" y1="190" x2="574" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="574" x2="1214" y2="574" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="638" y1="190" x2="638" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="638" x2="1214" y2="638" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="702" y1="190" x2="702" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="702" x2="1214" y2="702" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="766" y1="190" x2="766" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="766" x2="1214" y2="766" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="830" y1="190" x2="830" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="830" x2="1214" y2="830" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="894" y1="190" x2="894" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="894" x2="1214" y2="894" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="958" y1="190" x2="958" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="958" x2="1214" y2="958" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="1022" y1="190" x2="1022" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="1022" x2="1214" y2="1022" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="1086" y1="190" x2="1086" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="1086" x2="1214" y2="1086" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="1150" y1="190" x2="1150" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="1150" x2="1214" y2="1150" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="1214" y1="190" x2="1214" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="1214" x2="1214" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="632.5318464911691" y1="271.46815350883094" x2="1132.531846491169" y2="771.4681535088309" stroke="#B7C4C7" stroke-width="1" stroke-dasharray="6 5"/>
+<line x1="722.5318464911691" y1="681.4681535088309" x2="1042.531846491169" y2="361.46815350883094" stroke="#D9A65A" stroke-width="1" stroke-dasharray="4 4"/>
+<g opacity="0.16">  <mask id="aishort-mark-mark-only-m-u25" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>  </mask>  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u25)"/></g>
+<path fill="none" stroke="#0B6E62" stroke-width="2.5" d="M 530.5318464911691 361.46815350883094 L 722.5318464911691 361.46815350883094 L 1042.531846491169 681.4681535088309 L 1042.531846491169 873.4681535088309 A 128.0 128.0 0 0 1 914.5318464911691 1001.4681535088309 L 530.5318464911691 1001.4681535088309 A 128.0 128.0 0 0 1 402.53184649116906 873.4681535088309 L 402.53184649116906 489.46815350883094 A 128.0 128.0 0 0 1 530.5318464911691 361.46815350883094 Z"/>
+<path fill="none" stroke="#F2A33C" stroke-width="2.5" d="M 994.5318464911692 633.4681535088309 L 770.5318464911691 633.4681535088309 L 770.5318464911691 409.46815350883094 Z"/>
+<path stroke="#7C8A8D" stroke-width="1.4" d="M 514.5318464911691 489.46815350883094 L 546.5318464911691 489.46815350883094 M 530.5318464911691 473.46815350883094 L 530.5318464911691 505.46815350883094"/>
+<circle cx="530.5318464911691" cy="489.46815350883094" r="128.0" fill="none" stroke="#7C8A8D" stroke-width="1" stroke-dasharray="3 4"/>
+<path stroke="#7C8A8D" stroke-width="1.4" d="M 514.5318464911691 873.4681535088309 L 546.5318464911691 873.4681535088309 M 530.5318464911691 857.4681535088309 L 530.5318464911691 889.4681535088309"/>
+<circle cx="530.5318464911691" cy="873.4681535088309" r="128.0" fill="none" stroke="#7C8A8D" stroke-width="1" stroke-dasharray="3 4"/>
+<path stroke="#7C8A8D" stroke-width="1.4" d="M 898.5318464911691 873.4681535088309 L 930.5318464911691 873.4681535088309 M 914.5318464911691 857.4681535088309 L 914.5318464911691 889.4681535088309"/>
+<circle cx="914.5318464911691" cy="873.4681535088309" r="128.0" fill="none" stroke="#7C8A8D" stroke-width="1" stroke-dasharray="3 4"/>
+<line x1="402.53184649116906" y1="1001.4681535088309" x2="1042.531846491169" y2="1001.4681535088309" stroke="#3D4448" stroke-width="1.4"/>
+<line x1="398.53184649116906" y1="1001.4681535088309" x2="406.53184649116906" y2="1001.4681535088309" stroke="#3D4448" stroke-width="1.4"/><line x1="402.53184649116906" y1="997.4681535088309" x2="402.53184649116906" y2="1005.4681535088309" stroke="#3D4448" stroke-width="1.4"/>
+<line x1="1038.531846491169" y1="1001.4681535088309" x2="1046.531846491169" y2="1001.4681535088309" stroke="#3D4448" stroke-width="1.4"/><line x1="1042.531846491169" y1="997.4681535088309" x2="1042.531846491169" y2="1005.4681535088309" stroke="#3D4448" stroke-width="1.4"/>
+<text x="722.5318464911691" y="1035.468153508831" font-size="19" fill="#3D4448" text-anchor="middle" font-weight="600">B = 640 (80U)</text>
+<line x1="722.5318464911691" y1="361.46815350883094" x2="1042.531846491169" y2="361.46815350883094" stroke="#3D4448" stroke-width="1.4"/>
+<line x1="718.5318464911691" y1="361.46815350883094" x2="726.5318464911691" y2="361.46815350883094" stroke="#3D4448" stroke-width="1.4"/><line x1="722.5318464911691" y1="357.46815350883094" x2="722.5318464911691" y2="365.46815350883094" stroke="#3D4448" stroke-width="1.4"/>
+<line x1="1038.531846491169" y1="361.46815350883094" x2="1046.531846491169" y2="361.46815350883094" stroke="#3D4448" stroke-width="1.4"/><line x1="1042.531846491169" y1="357.46815350883094" x2="1042.531846491169" y2="365.46815350883094" stroke="#3D4448" stroke-width="1.4"/>
+<text x="882.5318464911691" y="345.46815350883094" font-size="19" fill="#3D4448" text-anchor="middle" font-weight="600">CUT = 320 (40U)</text>
+<line x1="1042.531846491169" y1="681.4681535088309" x2="1042.531846491169" y2="1001.4681535088309" stroke="#3D4448" stroke-width="1.4"/>
+<line x1="1038.531846491169" y1="681.4681535088309" x2="1046.531846491169" y2="681.4681535088309" stroke="#3D4448" stroke-width="1.4"/><line x1="1042.531846491169" y1="677.4681535088309" x2="1042.531846491169" y2="685.4681535088309" stroke="#3D4448" stroke-width="1.4"/>
+<line x1="1038.531846491169" y1="1001.4681535088309" x2="1046.531846491169" y2="1001.4681535088309" stroke="#3D4448" stroke-width="1.4"/><line x1="1042.531846491169" y1="997.4681535088309" x2="1042.531846491169" y2="1005.4681535088309" stroke="#3D4448" stroke-width="1.4"/>
+<text x="1118.531846491169" y="841.4681535088309" font-size="19" fill="#3D4448" text-anchor="middle" font-weight="600">320</text>
+<line x1="402.53184649116906" y1="361.46815350883094" x2="402.53184649116906" y2="489.46815350883094" stroke="#3D4448" stroke-width="1.4"/>
+<line x1="398.53184649116906" y1="361.46815350883094" x2="406.53184649116906" y2="361.46815350883094" stroke="#3D4448" stroke-width="1.4"/><line x1="402.53184649116906" y1="357.46815350883094" x2="402.53184649116906" y2="365.46815350883094" stroke="#3D4448" stroke-width="1.4"/>
+<line x1="398.53184649116906" y1="489.46815350883094" x2="406.53184649116906" y2="489.46815350883094" stroke="#3D4448" stroke-width="1.4"/><line x1="402.53184649116906" y1="485.46815350883094" x2="402.53184649116906" y2="493.46815350883094" stroke="#3D4448" stroke-width="1.4"/>
+<text x="350.53184649116906" y="425.46815350883094" font-size="19" fill="#3D4448" text-anchor="middle" font-weight="600">R=128</text>
+<text x="708.5318464911691" y="711.4681535088309" font-size="17" fill="#F2A33C" text-anchor="end" font-weight="600">折片直角边 = 224 = CUT − 2×GAP</text>
+<text x="706.5318464911691" y="345.46815350883094" font-size="17" fill="#F2A33C" text-anchor="end" font-weight="600">GAP = 48（折缝，仅两直角边）</text>
+<text x="1058.531846491169" y="721.4681535088309" font-size="17" fill="#0B6E62" font-weight="600">斜边 = 320√2 = 452.5 &lt; 直角路径 320+320 = 640（捷径本义）</text>
+<text x="190" y="164" font-size="18" fill="#3D4448" font-weight="600">比例系统：整数比 + 8pt 模块网格（B:R=5:1 · B:CUT=2:1 · CUT:R=5:2 · R:GAP=8:3）</text>
+<text x="190" y="138" font-size="18" fill="#3D4448" font-weight="600">光学配平：质心(460.7, 563.3) → 补偿 40% = (20.5, -20.5)</text>
+</svg></div>
+<div class="cap" style="margin-top:8px">blueprint：尺寸链 / 圆心十字标 + 半径虚线 / 折痕镜像关系 / 捷径不等式</div></section>
+
+<section><div class="sechead"><span class="secnum">§3</span><h2>色彩全量</h2></div>
+<div class="sw">
+<div style="background:#0B6E62;color:#fff">#0B6E62</div>
+<div style="background:#F2A33C;color:#3D2A00">#F2A33C</div>
+<div style="background:#14171A;color:#fff">#14171A</div>
+<div style="background:#F5F8F7;color:#3D4448">#F5F8F7</div>
+<div style="background:#3FC2A9;color:#04231E">#3FC2A9</div></div>
+<table style="margin-top:14px"><tr><th>色值</th><th>HEX</th><th>RGB</th><th>CMYK</th><th>Pantone（近似）</th></tr>
+<tr><td>#0B6E62</td><td><code>#0B6E62</code></td><td>(11, 110, 98)</td><td>(90, 0, 11, 57)</td><td>3295 C（近似，须打样校准）</td></tr><tr><td>#F2A33C</td><td><code>#F2A33C</code></td><td>(242, 163, 60)</td><td>(0, 33, 75, 5)</td><td>136 C（近似，须打样校准）</td></tr><tr><td>#14171A</td><td><code>#14171A</code></td><td>(20, 23, 26)</td><td>(23, 12, 0, 90)</td><td>Black 6 C</td></tr><tr><td>#F5F8F7</td><td><code>#F5F8F7</code></td><td>(245, 248, 247)</td><td>(1, 0, 0, 3)</td><td>7541 C（浅冷灰，近似）</td></tr><tr><td>#3FC2A9</td><td><code>#3FC2A9</code></td><td>(63, 194, 169)</td><td>(68, 0, 13, 24)</td><td>3385 C（近似）</td></tr></table>
+<table style="margin-top:14px"><tr><th>对比度组合</th><th>实测</th><th>AA 要求</th><th>判定</th></tr>
+<tr><td>主色 / 冷白底 #0B6E62 on #F5F8F7</td><td>5.74:1</td><td>≥4.5</td><td>✓</td></tr>
+<tr><td>主色 / 纯白</td><td>6.14:1</td><td>≥4.5</td><td>✓</td></tr>
+<tr><td>琥珀 / 主色（两色并置）</td><td>2.95:1</td><td>≥3.0（图形）</td><td>✓</td></tr>
+<tr><td>深底主色 / 炭黑底</td><td>8.14:1</td><td>≥4.5</td><td>✓</td></tr>
+<tr><td>灰阶主 / 白</td><td>9.91:1</td><td>≥4.5</td><td>✓</td></tr>
+<tr><td>灰阶辅 / 灰阶主</td><td>3.13:1</td><td>≥3.0（图形）</td><td>✓</td></tr></table>
+<p class="note" style="margin-top:12px"><b>诚实声明</b>：折片与主卡的区分依赖色彩，单色（mono）场景下该强调层与笔画融合属<b>预期行为</b>，
+层级由 L 形折缝（真实负空间）承住，不用描边/阴影假装区分。灰阶版保留两层明度差（3.13:1）以维持层次。</p></section>
+
+<section><div class="sechead"><span class="secnum">§4</span><h2>变体矩阵</h2></div>
+<div class="grid g3">
+<div class="tile light"><div style="width:250px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 256" width="1024" height="256" role="img" aria-label="AiShort">
+  <!-- 横版 lockup · mark 180 / 字标 cap ≈128 · 图字间距 60 = 0.33×mark高 · 字标宽锁定 660 -->
+  <g><mask id="m-h" maskUnits="userSpaceOnUse" x="0" y="0" width="4096" height="4096"><path fill="#FFFFFF" d="M 100 38 L 154 38 L 244 128 L 244 182 A 36 36 0 0 1 208 218 L 100 218 A 36 36 0 0 1 64 182 L 64 74 A 36 36 0 0 1 100 38 Z"/><path fill="#000000" d="M 154 38 L 244 128 L 154 128 Z"/></mask><path fill="#0B6E62" d="M 100 38 L 154 38 L 244 128 L 244 182 A 36 36 0 0 1 208 218 L 100 218 A 36 36 0 0 1 64 182 L 64 74 A 36 36 0 0 1 100 38 Z" mask="url(#m-h)"/><path fill="#F2A33C" d="M 230.5 114.5 L 167.5 114.5 L 167.5 51.5 Z"/></g>
+  <text x="304" y="192" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="176" font-weight="650" textLength="660" lengthAdjust="spacingAndGlyphs" fill="#14171A">AiShort</text>
+</svg></div><div class="cap">页眉 / README / 文档头</div><div class="cap">主标 横版 fullcolor</div></div>
+<div class="tile light"><div style="width:160px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" width="720" height="720" role="img" aria-label="AiShort">
+  <!-- 竖排 lockup · mark 288 / 字标 cap ≈109 · 图字间距 96 = 0.33×mark高 · 字标宽锁定 560 -->
+  <g><mask id="m-v" maskUnits="userSpaceOnUse" x="0" y="0" width="4096" height="4096"><path fill="#FFFFFF" d="M 273.6 96 L 360 96 L 504 240 L 504 326.4 A 57.6 57.6 0 0 1 446.4 384 L 273.6 384 A 57.6 57.6 0 0 1 216 326.4 L 216 153.6 A 57.6 57.6 0 0 1 273.6 96 Z"/><path fill="#000000" d="M 360 96 L 504 240 L 360 240 Z"/></mask><path fill="#0B6E62" d="M 273.6 96 L 360 96 L 504 240 L 504 326.4 A 57.6 57.6 0 0 1 446.4 384 L 273.6 384 A 57.6 57.6 0 0 1 216 326.4 L 216 153.6 A 57.6 57.6 0 0 1 273.6 96 Z" mask="url(#m-v)"/><path fill="#F2A33C" d="M 482.4 218.4 L 381.6 218.4 L 381.6 117.6 Z"/></g>
+  <text x="80" y="590" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="150" font-weight="650" textLength="560" lengthAdjust="spacingAndGlyphs" fill="#14171A">AiShort</text>
+</svg></div><div class="cap">窄栏 / 启动页 / 侧边</div><div class="cap">竖排 stacked</div></div>
+<div class="tile light"><div style="width:104px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-only : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-only-m-u26" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u26)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div class="cap">头像 / App / favicon 源</div><div class="cap">纯图形 fullcolor</div></div>
+<div class="tile light"><div style="width:250px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 256" width="1024" height="256" role="img" aria-label="AiShort">
+  <!-- 横版 lockup · mark 180 / 字标 cap ≈128 · 图字间距 60 = 0.33×mark高 · 字标宽锁定 660 -->
+  <g><mask id="m-h" maskUnits="userSpaceOnUse" x="0" y="0" width="4096" height="4096"><path fill="#FFFFFF" d="M 100 38 L 154 38 L 244 128 L 244 182 A 36 36 0 0 1 208 218 L 100 218 A 36 36 0 0 1 64 182 L 64 74 A 36 36 0 0 1 100 38 Z"/><path fill="#000000" d="M 154 38 L 244 128 L 154 128 Z"/></mask><path fill="#14171A" d="M 100 38 L 154 38 L 244 128 L 244 182 A 36 36 0 0 1 208 218 L 100 218 A 36 36 0 0 1 64 182 L 64 74 A 36 36 0 0 1 100 38 Z" mask="url(#m-h)"/><path fill="#14171A" d="M 230.5 114.5 L 167.5 114.5 L 167.5 51.5 Z"/></g>
+  <text x="304" y="192" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="176" font-weight="650" textLength="660" lengthAdjust="spacingAndGlyphs" fill="#14171A">AiShort</text>
+</svg></div><div class="cap">单色印刷 / 雕刻 / 传真</div><div class="cap">单黑 mono-black</div></div>
+<div class="tile dark"><div style="width:250px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 256" width="1024" height="256" role="img" aria-label="AiShort">
+  <!-- 横版 lockup · mark 180 / 字标 cap ≈128 · 图字间距 60 = 0.33×mark高 · 字标宽锁定 660 -->
+  <g><mask id="m-h" maskUnits="userSpaceOnUse" x="0" y="0" width="4096" height="4096"><path fill="#FFFFFF" d="M 100 38 L 154 38 L 244 128 L 244 182 A 36 36 0 0 1 208 218 L 100 218 A 36 36 0 0 1 64 182 L 64 74 A 36 36 0 0 1 100 38 Z"/><path fill="#000000" d="M 154 38 L 244 128 L 154 128 Z"/></mask><path fill="#FFFFFF" d="M 100 38 L 154 38 L 244 128 L 244 182 A 36 36 0 0 1 208 218 L 100 218 A 36 36 0 0 1 64 182 L 64 74 A 36 36 0 0 1 100 38 Z" mask="url(#m-h)"/><path fill="#FFFFFF" d="M 230.5 114.5 L 167.5 114.5 L 167.5 51.5 Z"/></g>
+  <text x="304" y="192" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="176" font-weight="650" textLength="660" lengthAdjust="spacingAndGlyphs" fill="#FFFFFF">AiShort</text>
+</svg></div><div class="cap">深色底 / 照片上</div><div class="cap">反白 reversed</div></div>
+<div class="tile light"><div style="width:250px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 256" width="1024" height="256" role="img" aria-label="AiShort">
+  <!-- 横版 lockup · mark 180 / 字标 cap ≈128 · 图字间距 60 = 0.33×mark高 · 字标宽锁定 660 -->
+  <g><mask id="m-h" maskUnits="userSpaceOnUse" x="0" y="0" width="4096" height="4096"><path fill="#FFFFFF" d="M 100 38 L 154 38 L 244 128 L 244 182 A 36 36 0 0 1 208 218 L 100 218 A 36 36 0 0 1 64 182 L 64 74 A 36 36 0 0 1 100 38 Z"/><path fill="#000000" d="M 154 38 L 244 128 L 154 128 Z"/></mask><path fill="#3D4448" d="M 100 38 L 154 38 L 244 128 L 244 182 A 36 36 0 0 1 208 218 L 100 218 A 36 36 0 0 1 64 182 L 64 74 A 36 36 0 0 1 100 38 Z" mask="url(#m-h)"/><path fill="#8A9296" d="M 230.5 114.5 L 167.5 114.5 L 167.5 51.5 Z"/></g>
+  <text x="304" y="192" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="176" font-weight="650" textLength="660" lengthAdjust="spacingAndGlyphs" fill="#14171A">AiShort</text>
+</svg></div><div class="cap">黑白印刷媒介</div><div class="cap">灰阶 grayscale</div></div>
+<div class="tile dark"><div style="width:104px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-darkmode : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-darkmode-m-u27" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#3FC2A9" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-darkmode-m-u27)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div class="cap">深色模式页眉（主色提亮）</div><div class="cap">深底专用 mark</div></div>
+<div class="tile light"><div style="width:64px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- favicon : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-favicon-m" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-favicon-m)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div class="cap">浏览器 / PWA</div><div class="cap">favicon SVG</div></div>
+</div></section>
+
+<section><div class="sechead"><span class="secnum">§5</span><h2>缩放性能墙 + 压力测试</h2></div>
+<div class="strip" style="align-items:flex-end;gap:24px">
+<div style="text-align:center"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAfElEQVR42mNgGHSAkY9HgVlG0gGGGdnZBIjWzKwg682dl/QfGYMM0ZXnNiDKAA4f5/XYDHg80+I9UYZwBHvtx2bAp8U2/4kyBJ8BRBmCzQBWA+0C5EDFG7DYDMCGQYYMUgNYTfWriTEAlNhwBiTIEJBLsGJgOgElNobhBQCdI5hSvTV32QAAAABJRU5ErkJggg==" width="16" height="16" style="image-rendering:auto;" alt="mark 16px"/><div class="cap">16px</div></div><div style="text-align:center"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA2ElEQVR42mNgGAWjYLADRnY2AVYD7QJ2L6fVHMFe+9Exm515P80sZxIVMuBKj3nPnZf0HxcGOYJmDuBKCLuPz3JkB3TEKPXzc7EIUM1yZhlJB0KWIztgW5Xu/qMthuep5ghyHPBpsc1/qjmCXAdQzRGUOIAqjqDUARQ7glQHgHIByBHoGCROFwdQHRDrAFBBha2EpLjEJNYBxGKSQ2rUAaMOoLYDQO0JktsC1HQAqFFDclkACjZqWA4qK0AtK7KaY5Q6AtSoAYUmxU0zUJogB4+2qkfBKCAEAF6BXGFtAEofAAAAAElFTkSuQmCC" width="32" height="32" style="image-rendering:auto;" alt="mark 32px"/><div class="cap">32px</div></div><div style="text-align:center"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAA/ElEQVR42u3YMQrCQBCF4QhR2cRK7JIDWNiIIAgewMJGJKSy2VqFeAYvInbewzPY6w28QHS6FIJx2Znd4Pth68xHEhImCBBCCKEfa49HhcqW13ivyzrHm8FbvTiNdP6oO7h3AJPhq4Ck301dPjYHk+GrgNNueFlNB5kTgNqsbzYAz/O8dIIwHf4TwAnCNkAcwQEQRXABxBCcABEEN4AdIQFgRdgAbBdJQYhvh+WLbQPgtL8GeIEHAAAAAAAAgEYDIp3fpYen5Zk1QGc2OUoDaANo72coDJXpYsvk0LW8WS2aDE/X4vktfd8Jepw43glantEGEOtzhBBCqCm9AAPwSeZsn3wjAAAAAElFTkSuQmCC" width="48" height="48" style="image-rendering:auto;" alt="mark 48px"/><div class="cap">48px</div></div><div style="text-align:center"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABc0lEQVR42u3aPUoDQRTA8c2Hu5FNpSBCkmKLgNZ+gEGLgIXCtrGxUWsjeAhTBjyC2KXzEl7BA3gDayHmtWlkd2fmvdX/H+YA78c6weFFERERERFR9VqtpD3MJkVPo5v26z13Nsg3r/L39OFuWeYIQj0nbzY3ksvxouzgtQfo5OdvVYevLUA8OnhyMfw6wOw6m/e2Ett3QqOTbLsafh3gZbq3+Hg++jSN0N4f3vgE+Ho9XZpGcHHx/QZgGiEUgFmEkAAmEUIDmEPQADCFoAVgBkETwASCNoA6ggUAVQQrAGoIPgHuL3qPglDkyD9QfwagFgHgGCA+O56XeUtUe2N0DeD6eP+iAAAAAAAAAAAAAAAAAID/CRCPDmeWAWRTxe9exO7OidXhZVMlyJtAlZUYn0fWdcLsCHTTQTq9/bY0vNxNYfcEVpeNFQRZ15GdpfDbIqsvQfvPQdZ11N8J5WKUXwf5DEMd2VSRdZ2IiIiIiIiIivUDyw1wuGSMlXYAAAAASUVORK5CYII=" width="64" height="64" style="image-rendering:auto;" alt="mark 64px"/><div class="cap">64px</div></div><div style="text-align:center"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAACcElEQVR42u3csUobcRzA8QvJaXIK3QqVWkFBLJIhXVqkhWqd2kVSOgTUQhEal4JjOwl9CB+ge8euvoVbH8DR4m5zdCsUczHN3f3/nw/8HsD7fe8uidwlCQAAAAAAAAAAAAD8T821lb25p73TWUzz4YOXjngFtLobw/bb1+cLnz7czHLyCBz9Mhe/vjpYOD68nvXiBVCyRpoulnHGC6AK9/jRfTcbHlyVvXwBlLT8KixeACXJjgaXdQjgxeN7vh1MWxXu+eMG8Ln/6PTHl+65rU3v0r9TteXfFsCvb89vRDAlnf3+RR0DEME0zv7lpd0qLn/cAERwR/PbW2d1D0AEd1DV5RcNQAQT/dbbykIKQAQFpb3Nk9ACEEEB+QEOMQARCEAEAhCBAEQgABEIQAQCEIEARCAAEQhABAIQgQBEIAARCEAEAog8AgFEHoEAIo9AAJFHIIDII6hrAPmzgXkEs5pgn0WsawAIAAEgAARAwAHkL62Y1TsJo3yPYdUDqPrU/golAAEIQAAWKQAjACMAIwAjACMAIwAjACMAIwAjACMAIwAjACMAIwAjACMAIwABCEAAAhBAfbW6Gx8tMvJH1yxy8mmurewJIOJJQjD37MlXy5zswdUgAsifcLXQ4jP6/DRMQpHXbKkF5vjwOgmJq0DBs399dZCEpv3m1XfLjeje71ZQfLLhwVUjTReDDaDRad/P3r/7adn/+N5f91fCjBuBK8FfZ/7R4DKK5ftMENk9f5xvB7FeDTr7/YvR37+T8CeEWH4xnN/eOmsuL+3a+i3/Razy+/uKTtrbPElarcxmAQAAAAAAAAAAAAAAgMn9BgBS6TIyBcFoAAAAAElFTkSuQmCC" width="128" height="128" style="image-rendering:auto;" alt="mark 128px"/><div class="cap">128px</div></div><div style="text-align:center"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAGmElEQVR42u3dS2tUBxjHYc9kJnPTRU0i1mojoSS0TmuCNpFEDVhivVBCk1JjDFYtEfHShW6kBXHj0kVdiRQUpF/ARTeCIt10o5tSv0E3IkW6sIiodYRSSgu2dmbOmXmfB/5foD3vz8wkmSxZAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8O8lSbIkl8tbikuSnAeRpsn1vLaue2zkbPeW0fPlhZm71S8OPeukvTgi4E/5oYH54raJS9UTh5522sELAPzTV/PlUm/3+IZz1aP7H3b60QsA/HH4pWJPcdv4xUhHLwDwXGGkdjLq4QsAcd/Y61s+XN47fSf68QsA8d7gGxzY4/AFgICK2yevOnoBIKDS7K6bDl4AcPwmAIQ5/pmdNxy6ABBQ9+SmC45cAAioa+2a3Q688QG4drp23dNFpiXLlvZXTxx84sAbH4Bfrkw8/u7Ld296yvCmX9AA/Hp18zMRIJPygwNzDrv5ARABMqmyOH/PYbcmACJAphRGaqccdWsDIAJk51//IwsPHHXrAyACpP/avza06KDTC4AIkKry3PRtB51uAESAVCTVyirHnI0AiAAtV//UXsecnQCIAC1Vmt11yzFnKwAiQMs45GwGQARoutyK3o0OObsBEAGaqjA6fMYhZzsAIoA3AIMHQARoiuLU1isOuT0CIAI0nM/3b68AiAANVTm8775Dbq8AiAANUz1+4JFDbr8AdEwEkiTnCtMNwGOH3J4B6IgI+FBVARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAGIFID7lyce1SPQibt2unZdAARAABAAARAABEAABAABEAABQAAEQAAQAAEQAARAAAQA//0EQAAEAAEQAAFAAARAABAAARAABCDzAejKdb94iO3VhwCYr6AQABMABMAEAAEwAUAATAAQABMABMAEAAEwAUAATAAQABMABMAEAAEwAUAATAAQABMABMAEAAEwAUAATAAQABMAAfAgmgAIgJkACICZAAiAmQAIgJkACICZAAiAmQAIgJkACICZAAiAmQAIgJkACICZAAiAmQAIgJkACICZAAiAmQAIgJkACICZAAiACQACYAKAAJgAIAAmAAiACQACYAKAAJgAIAAmAAiACQACYAKAAJgAIAAmAPynABz77DcPoqUWgCRJXGGKKp/P/exBtNQCQLpKn+z+3oNoAhBU9+Smrz2IJgBRAzA2ctaDaGmsvDBz1wWmrDBSO+lhtDTWvWX0vAtMWVKtvO5htFQC8PyrTxeYhW8FehgtheV6Xlvn+jKgOLXlsgfSWroTh566vKy8D7D+neMeSmvlitsmLrm8rMjl8h5Ka+XyQwPzDi9LLwM+nPzWg2kt2dH9D11cxnT1r97h4bSWvPs/vuGci8ug8r6Pf/SAWrOXlEu9ri2D8m+tnfWAWnPf/Bu/6NKy/FXApx/94EG1pv3rXyr2uLIsf0NgZd+YB9WasfqPnbuwdviOwAebv/HAWkN/8Wfv9B2X1U4vBRZmfvLgWsN+7Ldv+bCraqeXAs//h3lwrSE/9DM4sMdFtePPBrz5xpQH2P7Xu/7bJ6+6pDZWeO/tYx5ke5WVZnfddEGdEIH313/lgTbH7ysBD7e9/Phndt5wMd4TsIg/5z+56YJL6fDvDvgWof39Az4OPulau2a3C/HDQhbw9X6ybGm/q4j21cDKvjG/OxB3lcX5e/nBgTmXEFz9twj9KnGgwz+y8KAwUjvlyeevbxL2r97hk4U6+Of556Zv52tDi550XvLaIJevf9CoTxvuiNf3t+qf359UK6s82LyS+h8fqf8qaP1Bqv8twvofJH3xV4nrf5r8+IHHluoeVQ7vu1//bb3i1NYr9f9HhdHhM7kVvRs9uQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQcb8Dek50lgO8g7kAAAAASUVORK5CYII=" width="256" height="256" style="image-rendering:auto;" alt="mark 256px"/><div class="cap">256px</div></div>
+</div>
+<div class="grid g3" style="margin-top:18px">
+<div><div class="cap" style="margin-bottom:6px">16px ASCII 实测</div><pre>................
+................
+.....+++........
+....####+.......
+...+####+O......
+...+####+OO.....
+...+####+OOO....
+...+####+++++...
+...+#########+..
+...+#########+..
+...+#########+..
+...+#########...
+....++++++++....
+................
+................
+................</pre></div>
+<div><div class="cap" style="margin-bottom:6px">32px ASCII 实测</div><pre>................................
+................................
+................................
+................................
+................................
+.........+######+...............
+........#########...............
+.......##########.+.............
+.......##########.OO............
+.......##########.OOO...........
+.......##########.OOOO..........
+.......##########.OOOOO.........
+.......##########.OOOOOO........
+.......##########.+OOOOO+.......
+.......##########...............
+.......###################+.....
+.......####################.....
+.......####################.....
+.......####################.....
+.......####################.....
+.......####################.....
+.......####################.....
+.......###################+.....
+.......###################......
+........#################.......
+................................
+................................
+................................
+................................
+................................
+................................
+................................</pre></div>
+<div><div class="cap" style="margin-bottom:6px">模糊测试（28px + 3px 盒式模糊）</div><pre>                            
+                            
+                            
+         .....              
+      ..++++++..            
+     ..+######+.            
+     .+#######++..          
+     +########++++.         
+    .+########+++#+.        
+    .+########++###+.       
+    .+########++####+.      
+    .+########+++##++.      
+    .+#########+++++++..    
+    .+##########+++++++.    
+    .+#################+.   
+    .+#################+.   
+    .+#################+.   
+    .+#################+.   
+     +#################+.   
+     +#################+    
+     .+###############+.    
+      .+#############+..    
+       .+++++++++++++..     
+          ..........        
+                            
+                            
+                            
+                            </pre></div></div>
+<table style="margin-top:14px"><tr><th>七项检查</th><th>操作</th><th>实测结果</th><th>判定</th></tr>
+<tr><td>① 剪影</td><td>全部实体涂黑</td><td>去角方块剪影 + L 形折缝勾出折片，50 个标志中可指认</td><td>✓</td></tr>
+<tr><td>② 16px</td><td>真实光栅（非矢量缩放）</td><td>去角清晰；琥珀折片占 3×3 px 可见；再小则折片消失但去角仍成立</td><td>✓</td></tr>
+<tr><td>③ 单色</td><td>纯黑 / 纯白渲染</td><td>层级由 L 形负空间折缝承住（诚实声明：色彩强调层预期失效）</td><td>✓</td></tr>
+<tr><td>④ 模糊</td><td>3px 盒式模糊看大形</td><td>大形 = 去角方块，形态稳定（见右上 ASCII）</td><td>✓</td></tr>
+<tr><td>⑤ 反白</td><td>白色形置深底</td><td>无需调形即可用；深底另配提亮主色变体</td><td>✓</td></tr>
+<tr><td>⑥ 撞脸</td><td>与 6 家同赛道标志逐项比对</td><td>每项差异一句话可讲清（见 §7 决策记录与 spec）</td><td>✓</td></tr>
+<tr><td>⑦ 语义安全</td><td>旋转/镜像/负空间/拼音/禁忌/国旗</td><td>逐项已查无问题（详见 spec）</td><td>✓</td></tr></table></section>
+
+<section><div class="sechead"><span class="secnum">§6</span><h2>应用示例（6 场景 CSS 实景）</h2></div>
+<div class="grid g2">
+<div class="mock"><div class="browser"><span class="tab"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAfElEQVR42mNgGHSAkY9HgVlG0gGGGdnZBIjWzKwg682dl/QfGYMM0ZXnNiDKAA4f5/XYDHg80+I9UYZwBHvtx2bAp8U2/4kyBJ8BRBmCzQBWA+0C5EDFG7DYDMCGQYYMUgNYTfWriTEAlNhwBiTIEJBLsGJgOgElNobhBQCdI5hSvTV32QAAAABJRU5ErkJggg==" width="16" height="16" style="image-rendering:auto;vertical-align:middle" alt="mark 16px"/> AiShort — AI 提示词库</span></div>
+<div class="bar"><div style="width:30px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-only : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-only-m-u28" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u28)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div class="wm" style="font-size:19px;color:#14171A;font-weight:650;letter-spacing:-0.6px;">AiShort</div><span class="links"><span>提示词</span><span>扩展</span><span>文档</span></span></div>
+<div style="padding:16px;font-size:13px;color:#5C6669">① 浏览器标签（favicon 16px 实装）+ 站点页眉</div></div>
+<div class="mock"><div class="hero"><div style="width:72px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-reversed : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-reversed-m-u29" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-reversed-m-u29)"/>
+  <path fill="#FFFFFF" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div class="t" style="margin-top:14px">5000+ 即用 AI 提示词</div>
+<div class="s">复制 → 粘贴 → 专家级输出。</div></div><div style="padding:12px 16px;font-size:12px;color:#5C6669">② 官网 Hero（深色，反白版）</div></div>
+<div class="mock"><div class="phone"><div class="phonepad">
+<div><div class="appic"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABc0lEQVR42u3aPUoDQRTA8c2Hu5FNpSBCkmKLgNZ+gEGLgIXCtrGxUWsjeAhTBjyC2KXzEl7BA3gDayHmtWlkd2fmvdX/H+YA78c6weFFERERERFR9VqtpD3MJkVPo5v26z13Nsg3r/L39OFuWeYIQj0nbzY3ksvxouzgtQfo5OdvVYevLUA8OnhyMfw6wOw6m/e2Ett3QqOTbLsafh3gZbq3+Hg++jSN0N4f3vgE+Ho9XZpGcHHx/QZgGiEUgFmEkAAmEUIDmEPQADCFoAVgBkETwASCNoA6ggUAVQQrAGoIPgHuL3qPglDkyD9QfwagFgHgGCA+O56XeUtUe2N0DeD6eP+iAAAAAAAAAAAAAAAAAID/CRCPDmeWAWRTxe9exO7OidXhZVMlyJtAlZUYn0fWdcLsCHTTQTq9/bY0vNxNYfcEVpeNFQRZ15GdpfDbIqsvQfvPQdZ11N8J5WKUXwf5DEMd2VSRdZ2IiIiIiIiIivUDyw1wuGSMlXYAAAAASUVORK5CYII=" width="64" height="64" style="image-rendering:auto;" alt="mark 64px"/></div><div class="appname">AiShort</div></div>
+<div><div class="appic" style="background:#fff"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABc0lEQVR42u3aPUoDQRTA8c2Hu5FNpSBCkmKLgNZ+gEGLgIXCtrGxUWsjeAhTBjyC2KXzEl7BA3gDayHmtWlkd2fmvdX/H+YA78c6weFFERERERFR9VqtpD3MJkVPo5v26z13Nsg3r/L39OFuWeYIQj0nbzY3ksvxouzgtQfo5OdvVYevLUA8OnhyMfw6wOw6m/e2Ett3QqOTbLsafh3gZbq3+Hg++jSN0N4f3vgE+Ho9XZpGcHHx/QZgGiEUgFmEkAAmEUIDmEPQADCFoAVgBkETwASCNoA6ggUAVQQrAGoIPgHuL3qPglDkyD9QfwagFgHgGCA+O56XeUtUe2N0DeD6eP+iAAAAAAAAAAAAAAAAAID/CRCPDmeWAWRTxe9exO7OidXhZVMlyJtAlZUYn0fWdcLsCHTTQTq9/bY0vNxNYfcEVpeNFQRZ15GdpfDbIqsvQfvPQdZ11N8J5WKUXwf5DEMd2VSRdZ2IiIiIiIiIivUDyw1wuGSMlXYAAAAASUVORK5CYII=" width="64" height="64" style="image-rendering:auto;" alt="mark 64px"/></div><div class="appname">AiShort</div></div>
+<div><div class="appic" style="background:#0B6E62"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABc0lEQVR42u3aPUoDQRTA8c2Hu5FNpSBCkmKLgNZ+gEGLgIXCtrGxUWsjeAhTBjyC2KXzEl7BA3gDayHmtWlkd2fmvdX/H+YA78c6weFFERERERFR9VqtpD3MJkVPo5v26z13Nsg3r/L39OFuWeYIQj0nbzY3ksvxouzgtQfo5OdvVYevLUA8OnhyMfw6wOw6m/e2Ett3QqOTbLsafh3gZbq3+Hg++jSN0N4f3vgE+Ho9XZpGcHHx/QZgGiEUgFmEkAAmEUIDmEPQADCFoAVgBkETwASCNoA6ggUAVQQrAGoIPgHuL3qPglDkyD9QfwagFgHgGCA+O56XeUtUe2N0DeD6eP+iAAAAAAAAAAAAAAAAAID/CRCPDmeWAWRTxe9exO7OidXhZVMlyJtAlZUYn0fWdcLsCHTTQTq9/bY0vNxNYfcEVpeNFQRZ15GdpfDbIqsvQfvPQdZ11N8J5WKUXwf5DEMd2VSRdZ2IiIiIiIiIivUDyw1wuGSMlXYAAAAASUVORK5CYII=" width="64" height="64" style="image-rendering:auto;" alt="mark 64px"/></div><div class="appname">AiShort</div></div>
+<div><div class="appic" style="background:#F2A33C"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABc0lEQVR42u3aPUoDQRTA8c2Hu5FNpSBCkmKLgNZ+gEGLgIXCtrGxUWsjeAhTBjyC2KXzEl7BA3gDayHmtWlkd2fmvdX/H+YA78c6weFFERERERFR9VqtpD3MJkVPo5v26z13Nsg3r/L39OFuWeYIQj0nbzY3ksvxouzgtQfo5OdvVYevLUA8OnhyMfw6wOw6m/e2Ett3QqOTbLsafh3gZbq3+Hg++jSN0N4f3vgE+Ho9XZpGcHHx/QZgGiEUgFmEkAAmEUIDmEPQADCFoAVgBkETwASCNoA6ggUAVQQrAGoIPgHuL3qPglDkyD9QfwagFgHgGCA+O56XeUtUe2N0DeD6eP+iAAAAAAAAAAAAAAAAAID/CRCPDmeWAWRTxe9exO7OidXhZVMlyJtAlZUYn0fWdcLsCHTTQTq9/bY0vNxNYfcEVpeNFQRZ15GdpfDbIqsvQfvPQdZ11N8J5WKUXwf5DEMd2VSRdZ2IiIiIiIiIivUDyw1wuGSMlXYAAAAASUVORK5CYII=" width="64" height="64" style="image-rendering:auto;" alt="mark 64px"/></div><div class="appname">AiShort</div></div>
+</div></div><div style="padding:10px 16px;font-size:12px;color:#5C6669">③ 手机桌面 App 图标（四种底色）</div></div>
+<div class="mock cardbg"><div style="display:flex;justify-content:space-between"><div style="width:54px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-only : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-only-m-u30" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u30)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div>
+<div style="text-align:right;font-size:12px;color:#5C6669;line-height:1.6">千语 / Qian Yuniao<br>AI Shortcut Prompt · Maintainer</div></div>
+<div style="height:20px"></div><div style="font-size:11px;color:#8A9296">④ 名片</div></div>
+<div class="mock" style="padding:22px;display:flex;gap:14px;align-items:center">
+<div style="width:40px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-mono : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-mono-m-u31" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#14171A" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-mono-m-u31)"/>
+  <path fill="#14171A" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div style="font-size:13px;color:#5C6669">⑤ 单色印刷 / 雕刻：层级由折缝承住</div></div>
+<div class="mock watermark" style="padding:26px;overflow:hidden">
+<div style="font-size:13px;color:#3D4448;position:relative;z-index:1">⑥ 水印 / 大尺寸背景：10% 不透明度<br>
+<span style="color:#8A9296">剪影在极淡时仍可辨识去角特征</span></div>
+<div class="bgmark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-mono : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-mono-m-u32" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#14171A" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-mono-m-u32)"/>
+  <path fill="#14171A" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div></div>
+</div></section>
+
+<section><div class="sechead"><span class="secnum">§7</span><h2>决策记录 DR</h2></div>
+<table><tr><th>#</th><th>决策</th><th>依据</th><th>量化证据</th></tr>
+<tr><td>D1</td><td>概念取「折」而非「AI 神经/芯片/星芒」</td><td>行业俗套黑名单（知识源 B §2）+ 项目旧标即芯片+节点+渐变绿</td><td>旧元素 100% 弃用；新标 0 个 AI 行业高频符号</td></tr><tr><td>D2</td><td>主形 = 圆角卡片（品类载体）</td><td>元素预算 ≤3、主角唯一</td><td>主角占比 91.4%（1 − 折片 8.56%）</td></tr><tr><td>D3</td><td>切角取 45° 且 CUT = B/2</td><td>斜边 452.5 < 直角路径 640，捷径是几何事实</td><td>省 29.3% 路径长度（1 − 452.5/640）</td></tr><tr><td>D4</td><td>折片 = 切下三角沿切边镜像（非另画形状）</td><td>数学必然：镜像唯一解，且面积 = 缺口面积</td><td>折片 = 缺口 = 51200 px²，误差 0</td></tr><tr><td>D5</td><td>折痕共享、仅两直角边留缝</td><td>物理正确（折角沿折痕相连）；且保住单色可辨</td><td>首版三边带缝被视觉判为「贴上去的异物」，改后异物感 0</td></tr><tr><td>D6</td><td>比例系统取整数比而非 φ</td><td>开发者工具气质（稳定/工程感）；且全参数落在 8U 网格</td><td>6 项比例校验误差均为 0.000%</td></tr><tr><td>D7</td><td>折片占比压到 8.56%</td><td>点缀色纪律 <10%（知识源 F §2）</td><td>首版 12.14% 超标 → 调 CUT/GAP 后达标</td></tr><tr><td>D8</td><td>光学配平取质心补偿 40%</td><td>全量补偿 48.4px = B 的 7.6%，超出 2–5% 经验区间</td><td>取 40% = 20.5px = B 的 3.0%</td></tr><tr><td>D9</td><td>强调手段用颜色不用加形状</td><td>知识源 F §5：加形状会破元素预算与全形语法</td><td>元素预算 1/3，无新增形状；mono 退化已诚实声明</td></tr></table></section>
+
+<section><div class="sechead"><span class="secnum">§8</span><h2>交付清单与复现指引</h2></div>
+<table><tr><th>路径</th><th>内容</th></tr>
+<tr><td><code>01-web-rgb/svg/</code></td><td>10 个 SVG：6 变体 + 纯图形 4 色版（全轮廓化路径，零字体依赖）</td></tr>
+<tr><td><code>01-web-rgb/png/</code></td><td>透明底 PNG 256 / 512 / 1024 / 2048px</td></tr>
+<tr><td><code>03-social-favicon/</code></td><td>favicon.ico(16/32/48) · favicon-16/32/48/64.png · favicon.svg · apple-touch-icon-180 · android-chrome-512</td></tr>
+<tr><td><code>05-spec/</code></td><td>spec.md 使用规范 · blueprint.svg 数学标注图</td></tr>
+<tr><td><code>06-source/</code></td><td>build.py（几何+位图）· build_docs.py（文档）· geometry.json（全部数值）· build.log.txt</td></tr>
+<tr><td><code>preview.html</code> / <code>report.html</code></td><td>交互预览页 / 本全量技术报告（自包含单文件）</td></tr></table>
+<p class="note" style="margin-top:12px"><b>复现命令</b>：</p>
+<pre>python 06-source/build.py        # 重算几何 + 全部 SVG/PNG/ICO + geometry.json
+python 06-source/build_docs.py   # 由 geometry.json 重新生成 spec/preview/report</pre>
+<p class="note"><b>修改唯一入口</b>：只改 <code>build.py</code> 顶部的常量（B / R / CUT / GAP / COL）。
+折片、缝、面积占比、比例校验、光学偏移全部由常量派生，改一个值整包联动重算——包括本报告里的每一个数字。</p>
+</section>
+</div></body></html>

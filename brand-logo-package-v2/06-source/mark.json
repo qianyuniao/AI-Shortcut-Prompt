@@ -1,0 +1,14 @@
+{
+  "brand":   { "name_zh": "AiShort 提示词捷径", "name_en": "AiShort" },
+  "palette": { "primary": "#10997F", "structural": "#0B6E62",
+               "accent": "#A9DFD5",  "panel": "#F3F0E8" },
+  "canvas":  100,
+  "min_size_px": 24,
+  "motif": [
+    {"type":"rect","x":10.9375,"y":10.9375,"w":31.25,"h":31.25,"r":7.8125,"fill":"accent"},
+    {"type":"rect","x":57.8125,"y":10.9375,"w":31.25,"h":31.25,"r":7.8125,"fill":"accent"},
+    {"type":"rect","x":10.9375,"y":57.8125,"w":31.25,"h":31.25,"r":7.8125,"fill":"accent"},
+    {"type":"rect","x":57.8125,"y":57.8125,"w":31.25,"h":31.25,"r":7.8125,"fill":"primary"}
+  ],
+  "notes": "一格之距 One of Many — 2x2 卡片阵列（界面 4 列网格），右下格点亮（Ctrl+K 找到那一条）。B:R=4:1 B:G=2:1。"
+}

@@ -1,0 +1,97 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/* Legacy checkbox-based label — kept for backward compatibility but unused on homepage now */
+.checkboxLabel:hover {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  background-color: var(--site-color-checkbox-checked-bg);
+}
+
+input[type='checkbox'] + .checkboxLabel {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  line-height: 1.5;
+  border-radius: 0;
+  padding: 4px 10px;
+  transition: all 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid var(--site-color-hairline);
+  background-color: transparent;
+  font-size: 12px;
+  font-weight: 500;
+  user-select: none;
+  white-space: nowrap;
+  color: var(--ifm-color-content-secondary);
+}
+
+input:focus-visible + .checkboxLabel {
+  outline: 2px solid var(--ifm-color-primary);
+}
+
+input:checked + .checkboxLabel {
+  background-color: rgba(var(--ifm-color-primary-rgb), 0.1);
+  color: var(--site-color-tag-selected-text);
+  border-color: rgba(var(--ifm-color-primary-rgb), 0.4);
+}
+
+/* Ant Design Tag.CheckableTag — B+ filter chips: square, transparent ground, fill on selected。
+   --cat-* 由 index.tsx 按 tag 注入（色板见 src/data/categoryColors.ts），下面给的是无分类时的兜底。 */
+.tagSelect {
+  --cat-light: 148 163 184;
+  --cat-mid: 100 116 139;
+  --cat-deep: 51 65 85;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 0;
+  font-size: 12px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--ifm-color-content-secondary);
+  background-color: transparent;
+  border: 1px solid var(--site-color-hairline);
+  letter-spacing: 0.02em;
+}
+
+.tagSelect:hover {
+  color: var(--ifm-color-content) !important;
+  border-color: rgb(var(--cat-mid) / 0.4) !important;
+  background-color: rgb(var(--cat-mid) / 0.08) !important;
+}
+
+/* 分类圆点：常亮显示该分类的渐变色（未选中也是彩色，只是没有外发光）。
+   选中态的差别交给 .tagSelectChecked 的填充与 box-shadow，而不是"从灰变彩"——
+   一排 26 个灰点会让人以为筛选器没加载出来。 */
+.tagSelect :global(.tagFilterDot) {
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  margin-inline-start: 8px;
+  display: inline-block;
+  flex-shrink: 0;
+  background-image: linear-gradient(135deg, rgb(var(--cat-light) / 0.95), rgb(var(--cat-mid) / 0.9));
+  transition: box-shadow 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tagSelectChecked :global(.tagFilterDot) {
+  box-shadow: 0 0 6px rgb(var(--cat-mid) / 0.6);
+}
+
+.tagSelectChecked {
+  color: rgb(var(--cat-light));
+  background-color: rgb(var(--cat-mid) / 0.14);
+  border-color: rgb(var(--cat-mid) / 0.45);
+}
+
+.tagSelectChecked:hover {
+  color: rgb(var(--cat-light)) !important;
+  background-color: rgb(var(--cat-mid) / 0.2) !important;
+  border-color: rgb(var(--cat-mid) / 0.6) !important;
+}

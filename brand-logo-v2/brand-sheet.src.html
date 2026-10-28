@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Shortcut Prompt · 品牌标志规范</title>
+<style>
+:root{
+  --primary:#3EB489; --struct:#43474A; --panel:#F3F0E8;
+  --ink:#22262A; --muted:#7A7468; --line:#E5E2DA; --bg:#FAF9F6;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.75;font-size:15px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 28px}
+
+/* ---------- hero ---------- */
+.hero{background:var(--struct);color:#fff;padding:76px 0 68px;
+  background-image:radial-gradient(circle at 78% 18%,rgba(62,180,137,.20),transparent 58%)}
+.hero .mark{width:112px;height:112px;display:block}
+.hero h1{margin:26px 0 0;font-size:40px;font-weight:600;letter-spacing:.5px;line-height:1.25}
+.hero .sub{margin:12px 0 0;color:#B9C7C3;font-size:16px;font-weight:400;letter-spacing:2px}
+.hero .tag{display:inline-block;margin-top:24px;padding:6px 14px;border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;font-size:12.5px;color:#D8E4E0;letter-spacing:1px}
+
+/* ---------- sections ---------- */
+section{padding:60px 0 8px}
+.sec-no{font-size:12px;letter-spacing:3px;color:var(--primary);font-weight:600;margin-bottom:8px}
+h2{margin:0 0 20px;font-size:25px;font-weight:600;letter-spacing:.4px;line-height:1.4}
+h3{margin:34px 0 12px;font-size:17px;font-weight:600;color:var(--struct)}
+p{margin:0 0 14px;color:#3A3F44}
+.lead{font-size:17px;color:#3A3F44;line-height:1.85}
+blockquote{margin:26px 0;padding:22px 26px;background:#fff;border-left:3px solid var(--primary);
+  border-radius:0 8px 8px 0;font-size:18px;line-height:1.8;color:var(--struct);font-weight:500}
+blockquote small{display:block;margin-top:10px;font-size:13px;color:var(--muted);font-weight:400;letter-spacing:1px}
+
+/* ---------- cards ---------- */
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px 28px;margin:20px 0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+
+/* mark stages */
+.stage{border-radius:10px;display:flex;align-items:center;justify-content:center;padding:34px 20px;margin-bottom:10px}
+.stage svg{width:104px;height:104px;display:block}
+.st-light{background:#fff;border:1px solid var(--line)}
+.st-panel{background:var(--panel);border:1px solid var(--line)}
+.st-dark{background:var(--struct)}
+.cap{text-align:center;font-size:12.5px;color:var(--muted);letter-spacing:.5px}
+.cap b{display:block;color:var(--struct);font-size:13.5px;font-weight:600;margin-bottom:2px}
+
+/* tables */
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);
+  border-radius:10px;overflow:hidden;font-size:13.5px;margin:18px 0}
+th{background:#F4F2EC;text-align:left;padding:11px 14px;font-weight:600;color:var(--struct);
+  border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:11px 14px;border-bottom:1px solid #F0EDE6;vertical-align:top}
+tr:last-child td{border-bottom:none}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;
+  background:#F4F2EC;padding:1.5px 6px;border-radius:4px;color:#3A3F44}
+
+/* swatches */
+.sw{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);
+  border-radius:10px;padding:16px}
+.chip{width:58px;height:58px;border-radius:8px;flex:0 0 58px;border:1px solid rgba(0,0,0,.07)}
+.sw b{font-size:14.5px;display:block;margin-bottom:2px}
+.sw .role{font-size:12px;color:var(--muted);margin-bottom:6px;display:block}
+.sw .vals{font-size:12px;color:#5A564E;line-height:1.7;font-family:ui-monospace,Menlo,Consolas,monospace}
+
+/* metrics */
+.kv{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.kv b{display:block;font-size:11.5px;color:var(--muted);font-weight:500;letter-spacing:1.2px;
+  text-transform:uppercase;margin-bottom:6px}
+.kv span{font-size:22px;color:var(--struct);font-weight:600;line-height:1.3}
+.kv small{display:block;font-size:12px;color:var(--muted);margin-top:4px;font-weight:400}
+
+/* images */
+figure{margin:22px 0}
+figure img{width:100%;height:auto;display:block;border-radius:10px;background:transparent}
+figure.dark img{background:var(--struct);border-radius:10px}
+figure.alpha{border-radius:10px;overflow:hidden}
+figure.alpha img{
+  background-image:
+    linear-gradient(45deg,#E9E6DE 25%,transparent 25%,transparent 75%,#E9E6DE 75%),
+    linear-gradient(45deg,#E9E6DE 25%,transparent 25%,transparent 75%,#E9E6DE 75%);
+  background-size:18px 18px;background-position:0 0,9px 9px}
+figure.alpha figcaption::before{content:"透明底 · ";color:var(--primary);font-weight:600}
+figcaption{margin-top:10px;font-size:12.5px;color:var(--muted);text-align:center}
+
+/* lists */
+ul{margin:12px 0;padding-left:0;list-style:none}
+li{padding-left:22px;position:relative;margin:9px 0;font-size:14px;color:#3A3F44}
+li::before{content:"";position:absolute;left:4px;top:10px;width:5px;height:5px;
+  border-radius:50%;background:var(--primary)}
+ul.ban li::before{background:#C7503E}
+ul.ban li{color:#8A4438}
+
+/* download pills */
+.dl{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+.dl a{display:inline-block;padding:8px 15px;background:#fff;border:1px solid var(--line);
+  border-radius:8px;text-decoration:none;color:var(--struct);font-size:13px;transition:.15s}
+.dl a:hover{border-color:var(--primary);color:var(--primary)}
+.dl a::before{content:"⬇ ";opacity:.5}
+
+footer{margin-top:64px;padding:28px 0 48px;border-top:1px solid var(--line);
+  font-size:12.5px;color:var(--muted)}
+@media(max-width:640px){
+  .hero h1{font-size:29px} .wrap{padding:0 18px} section{padding:44px 0 4px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <svg class="mark" viewBox="0 0 100 100" role="img" aria-label="AI Shortcut Prompt">
+      <circle cx="50" cy="50" r="36" fill="none" stroke="#FFFFFF" stroke-width="12"/>
+      <path d="M 50 30 A 20 20 0 0 0 50 70 Z" fill="#FFFFFF"/>
+      <rect x="52.5" y="44.5" width="25" height="11" rx="5.5" fill="#FFFFFF"/>
+    </svg>
+    <h1>AI Shortcut Prompt</h1>
+    <p class="sub">二 分 圆 盘 · The Direct Line</p>
+    <span class="tag">品牌标志规范 v2 · 取代 v1「切角卡片」</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- 01 设计理念 -->
+<section>
+  <div class="sec-no">01</div>
+  <h2>设计理念</h2>
+  <blockquote>
+    捷径不是多画一条线，而是删掉绕远的那些。
+    <small>THE SHORTCUT IS WHAT YOU DELETE, NOT WHAT YOU ADD</small>
+  </blockquote>
+  <p class="lead">一个圆盘被竖直直径一分为二。<strong>左半实心</strong>——这是已经攒下的 5000+ 条提示词，是存量，是打开就能用的积累；<strong>右半留白</strong>，一条圆头直线直连两端——这是抄近道，从问题直达答案。</p>
+  <p>原标志的右半是一片布满 6–8 个节点的直角电路走线。新标志把它删到只剩一条直连段。<strong>被删掉的那段绕路，就是「捷径」本身</strong>。这符合留白方法论的核心判断：一个标志的力量来自被删掉的部分，而不是被加上的部分。</p>
+
+  <div class="grid3">
+    <div class="card">
+      <b>复用 · Reuse</b>
+      <p style="margin:8px 0 0;font-size:13.5px">左半实心面代表已积累的提示词库。单一闭合面，在任何尺寸下都可辨。</p>
+    </div>
+    <div class="card">
+      <b>捷径 · Shortcut</b>
+      <p style="margin:8px 0 0;font-size:13.5px">直角折线删至一条直连段，端点即圆头。不新增符号，只做删减。</p>
+    </div>
+    <div class="card">
+      <b>即取即用 · Instant</b>
+      <p style="margin:8px 0 0;font-size:13.5px">深色外环收口，中缝留白形成呼吸。形制完整，一眼可辨。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 标志构成 -->
+<section>
+  <div class="sec-no">02</div>
+  <h2>标志构成</h2>
+  <p>整枚标志只由 <strong>3 个几何图元</strong>组成（16px 简化版为 2 个）。图元越少，小尺寸越稳。</p>
+
+  <div class="grid4">
+    <div>
+      <div class="stage st-panel">
+        <svg viewBox="0 0 100 100" role="img" aria-label="外环">
+          <circle cx="50" cy="50" r="36" fill="none" stroke="#43474A" stroke-width="12"/>
+        </svg>
+      </div>
+      <div class="cap"><b>① 外环</b>r=36 · 线宽 12<br>深色结构色</div>
+    </div>
+    <div>
+      <div class="stage st-panel">
+        <svg viewBox="0 0 100 100" role="img" aria-label="实心左半">
+          <path d="M 50 30 A 20 20 0 0 0 50 70 Z" fill="#3EB489"/>
+        </svg>
+      </div>
+      <div class="cap"><b>② 实心左半</b>r=20 半圆<br>品牌主色</div>
+    </div>
+    <div>
+      <div class="stage st-panel">
+        <svg viewBox="0 0 100 100" role="img" aria-label="直连段">
+          <rect x="52.5" y="44.5" width="25" height="11" rx="5.5" fill="#43474A"/>
+        </svg>
+      </div>
+      <div class="cap"><b>③ 圆头直连段</b>x 58→72 · 厚 11<br>两端圆头即节点</div>
+    </div>
+    <div>
+      <div class="stage st-panel">
+        <svg viewBox="0 0 100 100" role="img" aria-label="合成">
+          <circle cx="50" cy="50" r="36" fill="none" stroke="#43474A" stroke-width="12"/>
+          <path d="M 50 30 A 20 20 0 0 0 50 70 Z" fill="#3EB489"/>
+          <rect x="52.5" y="44.5" width="25" height="11" rx="5.5" fill="#43474A"/>
+        </svg>
+      </div>
+      <div class="cap"><b>合成</b>中缝间隙 10 单位<br>层级靠留白而非色相</div>
+    </div>
+  </div>
+
+  <h3>几何关系</h3>
+  <table>
+    <tr><th>要素</th><th>数值（100×100 画布）</th><th>说明</th></tr>
+    <tr><td>外环</td><td><code>r=36</code> · 线宽 <code>12</code></td><td>外边界至画布边缘留 2 单位，内边界半径 30</td></tr>
+    <tr><td>实心左半</td><td><code>r=20</code> 半圆，直边落在 <code>x=50</code></td><td>直边即纵向中缝</td></tr>
+    <tr><td>中缝间隙</td><td><code>10</code> 单位（30 − 20）</td><td><strong>关键值</strong>：单色下靠它拉开层级，16px 时约 1.6px</td></tr>
+    <tr><td>直连段</td><td><code>x 58→72</code> · 厚 <code>11</code> · 圆头</td><td>圆头半径 5.5，等价于两个等径端点节点 + 一条直连路径</td></tr>
+    <tr><td>整体 footprint</td><td>72% W × 72% H</td><td>环形标志的标准占比</td></tr>
+  </table>
+</section>
+
+<!-- 03 设计推导 -->
+<section>
+  <div class="sec-no">03</div>
+  <h2>设计推导：从原标志到新标志</h2>
+  <p>新标志不是凭空画出来的，而是从项目现有标志 <code>static/img/logo.png</code> 中提取空间事实后，压缩得到的。</p>
+
+  <h3>第一步 · 提取空间事实并评分</h3>
+  <table>
+    <tr><th>编号</th><th>类别</th><th>观察到的事实</th><th>可标志化</th></tr>
+    <tr><td>F1</td><td>主体关系</td><td>单一闭合轮廓被一条纵向中缝分为左右两半；左半实心填充，右半以线条为主</td><td><strong>High</strong> ✓ 采用</td></tr>
+    <tr><td>F2</td><td>主导轴</td><td>纵向中缝是最强结构轴，整体轮廓近圆</td><td><strong>High</strong> ✓ 采用</td></tr>
+    <tr><td>F3</td><td>色彩角色</td><td>1 主色青绿 #3EB489 + 1 深色结构 #43474A + 中性浅底</td><td><strong>High</strong> ✓ 采用</td></tr>
+    <tr><td>F4</td><td>尺度对比</td><td>端点节点直径 : 轮廓宽 ≈ 1:8，节点极小且等径</td><td><strong>High</strong> ✓ 采用</td></tr>
+    <tr><td>F5</td><td>负空间</td><td>右半为大面积连续负空间，形状由外轮廓收边</td><td>Medium · 未采用</td></tr>
+    <tr><td>F6</td><td>节奏</td><td>直角折线 + 端点圆节点重复，约 6–8 个节点</td><td>Low · <strong>仅保留关系</strong></td></tr>
+    <tr><td>F7</td><td>光 / 景深</td><td>左上到右下轻微明暗渐变，无投影</td><td>Low · <strong>弃用</strong></td></tr>
+  </table>
+  <p style="font-size:13.5px;color:var(--muted)">F6 的 6–8 个节点在 24px 下必然粘连，只保留「节点 + 连线」这一关系；F7 的渐变违反平板约束，直接丢弃。</p>
+
+  <h3>第二步 · 语义到几何的映射</h3>
+  <table>
+    <tr><th>品牌关键词</th><th>依据的事实</th><th>几何决策</th></tr>
+    <tr><td><strong>捷径</strong> Shortcut（主导）</td><td>F6 直角绕行走线</td><td>删至一条直连段，端点即圆头</td></tr>
+    <tr><td>复用 Reuse</td><td>F1 左半实心块（5000+ 存量）</td><td>实心半圆，主标记族</td></tr>
+    <tr><td>即取即用 Instant</td><td>F2 纵向中缝 + F3 外描边</td><td>深色外环 + 中缝留白</td></tr>
+  </table>
+</section>
+
+<!-- 04 标志变体 -->
+<section>
+  <div class="sec-no">04</div>
+  <h2>标志变体</h2>
+  <div class="grid4">
+    <div>
+      <div class="stage st-light">
+        <svg viewBox="0 0 100 100" role="img" aria-label="全彩">
+          <circle cx="50" cy="50" r="36" fill="none" stroke="#43474A" stroke-width="12"/>
+          <path d="M 50 30 A 20 20 0 0 0 50 70 Z" fill="#3EB489"/>
+          <rect x="52.5" y="44.5" width="25" height="11" rx="5.5" fill="#43474A"/>
+        </svg>
+      </div>
+      <div class="cap"><b>全彩版</b>浅色背景默认使用</div>
+    </div>
+    <div>
+      <div class="stage st-panel">
+        <svg viewBox="0 0 100 100" role="img" aria-label="单色">
+          <circle cx="50" cy="50" r="36" fill="none" stroke="#43474A" stroke-width="12"/>
+          <path d="M 50 30 A 20 20 0 0 0 50 70 Z" fill="#43474A"/>
+          <rect x="52.5" y="44.5" width="25" height="11" rx="5.5" fill="#43474A"/>
+        </svg>
+      </div>
+      <div class="cap"><b>单色版</b>烫金 · 雕刻 · 单色印刷</div>
+    </div>
+    <div>
+      <div class="stage st-dark">
+        <svg viewBox="0 0 100 100" role="img" aria-label="反白">
+          <circle cx="50" cy="50" r="36" fill="none" stroke="#FFFFFF" stroke-width="12"/>
+          <path d="M 50 30 A 20 20 0 0 0 50 70 Z" fill="#FFFFFF"/>
+          <rect x="52.5" y="44.5" width="25" height="11" rx="5.5" fill="#FFFFFF"/>
+        </svg>
+      </div>
+      <div class="cap"><b>反白版</b>深色 / 彩色背景</div>
+    </div>
+    <div>
+      <div class="stage st-light">
+        <svg viewBox="-11 -11 122 122" role="img" aria-label="净空区">
+          <rect x="-11" y="-11" width="122" height="122" fill="#F3F0E8"/>
+          <rect x="-11" y="-11" width="122" height="122" fill="none" stroke="#43474A" stroke-width="0.6" stroke-dasharray="3 2.5"/>
+          <circle cx="50" cy="50" r="36" fill="none" stroke="#43474A" stroke-width="12"/>
+          <path d="M 50 30 A 20 20 0 0 0 50 70 Z" fill="#3EB489"/>
+          <rect x="52.5" y="44.5" width="25" height="11" rx="5.5" fill="#43474A"/>
+          <text x="50" y="-3.2" font-family="Helvetica,Arial,sans-serif" font-size="4.5" fill="#43474A" text-anchor="middle">clear space = X</text>
+        </svg>
+      </div>
+      <div class="cap"><b>净空区</b>X = 11 单位（标志宽 11%）</div>
+    </div>
+  </div>
+
+  <h3>纯图形 · 透明底交付</h3>
+  <figure class="alpha">
+    <img src="./png-transparent/transparency-proof.png" alt="透明底验证：棋盘格上的四种标志">
+    <figcaption>棋盘格即证明：标志背后没有任何白色底板，背景完全透明</figcaption>
+  </figure>
+  <p class="lead">透明底 PNG 已单独成包，放在 <code>png-transparent/</code>。<strong>留白版</strong>四周留 8% 净空（推荐，符合净空区规范）；<strong>紧裁版</strong>贴齐标志边缘，适合需要自己排版的场景。两种都无白色底。</p>
+
+  <h3>横版组合 · 项目全名</h3>
+  <figure class="alpha">
+    <img src="./assets/aishort-logo-horizontal-2048px.png" alt="AI Shortcut Prompt 横版组合标志">
+    <figcaption>横版组合（透明底 2048×256）· 标志 180px · 图字间距 56 = 0.31× 标志高</figcaption>
+  </figure>
+  <figure class="dark">
+    <img src="./assets/aishort-logo-horizontal-dark-2048px.png" alt="AI Shortcut Prompt 横版反白组合标志">
+    <figcaption>深色背景使用反白组合</figcaption>
+  </figure>
+
+  <h3>竖版组合</h3>
+  <div class="grid2">
+    <figure class="alpha">
+      <img src="./assets/aishort-logo-stacked-1024px.png" alt="AI Shortcut Prompt 竖版组合标志">
+      <figcaption>竖版（透明底 1024×1024）</figcaption>
+    </figure>
+    <figure class="dark">
+      <img src="./assets/aishort-logo-stacked-dark-1024px.png" alt="AI Shortcut Prompt 竖版反白组合标志">
+      <figcaption>竖版反白</figcaption>
+    </figure>
+  </div>
+
+  <h3>编辑作品</h3>
+  <figure>
+    <img src="./editorial-aishort-1024x1536.png" alt="编辑作品：上方原标志，下方抽象面板" style="max-width:420px;margin:0 auto">
+    <figcaption>1024×1536 编辑作品 · 上方忠实保留原标志，下方为抽象面板与署名</figcaption>
+  </figure>
+</section>
+
+<!-- 05 色彩 -->
+<section>
+  <div class="sec-no">05</div>
+  <h2>色彩规范</h2>
+  <p>纪律：<strong>1 主色 + 1 深色结构色 + 至多 1 点缀色</strong>，全部取自参考视觉，不得引入新色相。主色沿用线上 <code>#3EB489</code>，更换标志不需要改动全站配色。</p>
+
+  <div class="grid2">
+    <div class="sw">
+      <div class="chip" style="background:#3EB489"></div>
+      <div>
+        <b>主色 · Primary</b>
+        <span class="role">实心左半的填充，占面积最大</span>
+        <div class="vals">
+          HEX #3EB489 ｜ RGB(62, 180, 137)<br>
+          CMYK C66 M0 Y24 K29<br>
+          HSL H158 S49% L47%<br>
+          对比度 vs 白 2.59:1 ｜ vs 象牙底 2.28:1
+        </div>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#43474A"></div>
+      <div>
+        <b>深色结构色 · Structural</b>
+        <span class="role">外环、直连段、单色版与文字</span>
+        <div class="vals">
+          HEX #43474A ｜ RGB(67, 71, 74)<br>
+          CMYK C9 M4 Y0 K71<br>
+          HSL H206 S5% L28%<br>
+          对比度 vs 白 9.38:1 ｜ vs 象牙底 8.24:1
+        </div>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#D2D6D8"></div>
+      <div>
+        <b>点缀色 · Accent</b>
+        <span class="role">备用，面积不超过 8%</span>
+        <div class="vals">
+          HEX #D2D6D8 ｜ RGB(210, 214, 216)<br>
+          CMYK C3 M1 Y0 K15<br>
+          HSL H200 S7% L84%<br>
+          当前标志本体未使用
+        </div>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#F3F0E8"></div>
+      <div>
+        <b>象牙底 · Panel</b>
+        <span class="role">规范页与编辑作品的底色</span>
+        <div class="vals">
+          HEX #F3F0E8 ｜ RGB(243, 240, 232)<br>
+          CMYK C0 M1 Y5 K5<br>
+          HSL H44 S31% L93%<br>
+          纯平，无渐变无纹理
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 尺寸 -->
+<section>
+  <div class="sec-no">06</div>
+  <h2>最小尺寸与可辨性</h2>
+
+  <div class="grid4" style="margin:20px 0">
+    <div class="kv"><b>图元数</b><span>3</span><small>16px 简化版为 2</small></div>
+    <div class="kv"><b>最小尺寸 · 完整版</b><span>32 px</span><small>低于此尺寸请用简化版</small></div>
+    <div class="kv"><b>最小尺寸 · 简化版</b><span>16 px</span><small>favicon / 扩展工具栏</small></div>
+    <div class="kv"><b>净空区</b><span>11 单位</span><small>标志宽度的 11%</small></div>
+  </div>
+
+  <figure>
+    <img src="./assets/legibility-check-16-24-32.png" alt="16 / 24 / 32 px 单色可辨性验证">
+    <figcaption>16 / 24 / 32 px 单色可辨性验证（最近邻放大 8 倍）· 16px 可辨 · 24px 清晰 · 32px 直连段可辨</figcaption>
+  </figure>
+
+  <div class="card" style="border-left:3px solid var(--primary)">
+    <b style="font-size:15px">为什么 16px 要单独出一版</b>
+    <p style="margin:10px 0 0;font-size:13.5px">完整版在 16px 下右半区只有约 6px 宽，直连段必然糊掉。更关键的是：单色模式下外环与实心左半<strong>同色</strong>，间隙若低于 1px 就会塌成一个实心饼（单色崩塌）。因此 16/24px 改用简化版——保留「二分圆盘」这一最强识别点，去掉直连段，并把中缝拉到 10 单位（16px 下约 1.6px）。<strong>层级靠留白，不靠色相。</strong></p>
+  </div>
+
+  <p style="margin-top:16px">单色诊断结论：<strong>转换后仅 1 个明度层级，明度跨度 0.0000 —— PASS</strong>，形状本身承载层级关系。</p>
+</section>
+
+<!-- 07 应用 -->
+<section>
+  <div class="sec-no">07</div>
+  <h2>应用场景</h2>
+  <figure>
+    <img src="dist/application-preview.png" alt="六场景应用预览">
+    <figcaption>六场景应用预览：浅底 / 深底反白 / favicon / 名片 / 单色烫金 / 大尺寸户外</figcaption>
+  </figure>
+
+  <table>
+    <tr><th>场景</th><th>使用文件</th></tr>
+    <tr><td>网站页眉 / README 头图</td><td><code>svg/aishort-logo-horizontal-fullcolor.svg</code></td></tr>
+    <tr><td>深色模式页眉</td><td><code>svg/aishort-logo-horizontal-reverse.svg</code></td></tr>
+    <tr><td>头像 / App 图标 / 社交头像</td><td><code>svg/aishort-mark-only-fullcolor.svg</code></td></tr>
+    <tr><td>浏览器扩展 / PWA 图标</td><td><code>assets/favicon.ico</code> · <code>assets/favicon-16.png</code></td></tr>
+    <tr><td>单色印刷 / 雕刻 / 印章</td><td><code>svg/aishort-logo-horizontal-mono.svg</code></td></tr>
+    <tr><td>PPT 等不支持 SVG 的平台</td><td><code>assets/aishort-mark-{32,64,128,256,512,1024}px.png</code></td></tr>
+  </table>
+</section>
+
+<!-- 08 禁用 -->
+<section>
+  <div class="sec-no">08</div>
+  <h2>禁用规范</h2>
+  <div class="grid2">
+    <div class="card">
+      <b style="font-size:15px">禁止</b>
+      <ul class="ban">
+        <li>使用规范外的颜色重新着色</li>
+        <li>拉伸、压扁、旋转或施加透视变形</li>
+        <li>添加渐变、投影、外发光或描边</li>
+        <li>置于杂乱背景而不使用反白版或纯色衬底</li>
+        <li>小于最小尺寸，或把其他元素放进净空区</li>
+        <li>拆散图元重新组合成新图形</li>
+        <li>更改中缝间隙——它是层级关系的唯一来源</li>
+      </ul>
+    </div>
+    <div class="card">
+      <b style="font-size:15px">要求</b>
+      <ul>
+        <li>始终保持 1:1 比例，等比缩放</li>
+        <li>四周保留 X = 11 单位的净空</li>
+        <li>深色背景一律使用反白版</li>
+        <li>单色场景使用单色版，不做灰度近似</li>
+        <li>修改参数请改 <code>mark.json</code> 后重跑脚本，<strong>不要手改 SVG</strong></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 09 文件 -->
+<section>
+  <div class="sec-no">09</div>
+  <h2>文件清单</h2>
+
+  <h3>透明底 PNG（位于 <code>png-transparent/</code>，无白色底板）</h3>
+  <div class="dl">
+    <a href="./png-transparent/aishort-mark-transparent-2048px.png">纯图形 2048px 透明底</a>
+    <a href="./png-transparent/aishort-mark-transparent-1024px.png">纯图形 1024px 透明底</a>
+    <a href="./png-transparent/aishort-mark-transparent-512px.png">纯图形 512px 透明底</a>
+    <a href="./png-transparent/aishort-mark-transparent-256px.png">纯图形 256px 透明底</a>
+    <a href="./png-transparent/aishort-mark-transparent-tight-1024px.png">纯图形 紧裁 1024px</a>
+    <a href="./png-transparent/aishort-mark-transparent-tight-512px.png">纯图形 紧裁 512px</a>
+    <a href="./png-transparent/aishort-mark-mono-dark-transparent-1024px.png">纯图形 单色深灰</a>
+    <a href="./png-transparent/aishort-mark-white-transparent-1024px.png">纯图形 纯白（深底用）</a>
+    <a href="./png-transparent/aishort-mark-simplified-transparent-1024px.png">纯图形 简化版</a>
+    <a href="./png-transparent/aishort-logo-horizontal-transparent-2048px.png">横版组合 2048px 透明底</a>
+    <a href="./png-transparent/aishort-logo-stacked-transparent-1024px.png">竖版组合 1024px 透明底</a>
+    <a href="./png-transparent/transparency-proof.png">透明底验证图</a>
+  </div>
+
+  <h3>PNG 图片（位于 <code>assets/</code>）</h3>
+  <div class="dl">
+    <a href="./assets/aishort-logo-horizontal-2048px.png">横版组合 2048px（透明底）</a>
+    <a href="./assets/aishort-logo-horizontal-white-2048px.png">横版组合 白底</a>
+    <a href="./assets/aishort-logo-horizontal-dark-2048px.png">横版组合 深底反白</a>
+    <a href="./assets/aishort-logo-horizontal-mono-2048px.png">横版组合 单色</a>
+    <a href="./assets/aishort-logo-stacked-1024px.png">竖版组合 1024px</a>
+    <a href="./assets/aishort-logo-stacked-dark-1024px.png">竖版组合 反白</a>
+    <a href="./assets/aishort-mark-1024px.png">纯图形 1024px</a>
+    <a href="./assets/aishort-mark-512px.png">纯图形 512px</a>
+    <a href="./assets/aishort-mark-256px.png">纯图形 256px</a>
+    <a href="./assets/aishort-mark-mono-512px.png">纯图形 单色 512px</a>
+    <a href="./assets/aishort-mark-reverse-512px.png">纯图形 反白 512px</a>
+    <a href="./assets/favicon.ico">favicon.ico</a>
+  </div>
+
+  <table>
+    <tr><th>文件</th><th>用途</th></tr>
+    <tr><td><code>svg/aishort-logo-horizontal-{fullcolor,mono,reverse}.svg</code></td><td>横版组合，三种色彩版</td></tr>
+    <tr><td><code>svg/aishort-logo-stacked-{fullcolor,reverse}.svg</code></td><td>竖版组合</td></tr>
+    <tr><td><code>svg/aishort-mark-only-{fullcolor,mono,reverse}.svg</code></td><td>纯图形标志</td></tr>
+    <tr><td><code>assets/favicon-{16,20,24}.png</code> · <code>favicon.ico</code></td><td>简化版，用于 16–24px</td></tr>
+    <tr><td><code>assets/aishort-mark-{32…1024}px.png</code></td><td>完整版位图，透明底</td></tr>
+    <tr><td><code>assets/apple-touch-icon-180.png</code> · <code>android-chrome-512.png</code></td><td>平台图标</td></tr>
+    <tr><td><code>mark.json</code> · <code>mark-simplified.json</code></td><td>图元源配置（改动入口）</td></tr>
+    <tr><td><code>build_assets.py</code> · <code>build_lockup.py</code></td><td>重新生成位图与组合</td></tr>
+  </table>
+
+  <h3>重新生成</h3>
+  <div class="card" style="background:#F7F6F2">
+    <code style="background:none;padding:0;display:block;line-height:2">
+      python mark_spec.py --config mark.json --outdir ./dist --check-mono<br>
+      python build_assets.py<br>
+      python build_lockup.py
+    </code>
+  </div>
+</section>
+
+<footer>
+  AI Shortcut Prompt · 品牌标志规范 v2「二分圆盘 · The Direct Line」<br>
+  所有数值均源自已确认的抽象母题与图元配置，修改请从 <code>mark.json</code> 重新生成，不要手改产出文件。
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 256" width="2048" height="256" role="img" aria-label="AI Shortcut Prompt">
+  <g transform="translate(137.48,38.00) scale(1.8000)">
+    <circle cx="50" cy="50" r="36" fill="none" stroke="#FFFFFF" stroke-width="12"/>
+    <path d="M 50 30 A 20 20 0 0 0 50 70 Z" fill="#FFFFFF"/>
+    <rect x="52.5" y="44.5" width="25" height="11" rx="5.5" fill="#FFFFFF"/>
+  </g>
+  <text x="373.48" y="190.00" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="168" font-weight="650" textLength="1537.05" lengthAdjust="spacingAndGlyphs" fill="#FFFFFF">AI Shortcut Prompt</text>
+</svg>

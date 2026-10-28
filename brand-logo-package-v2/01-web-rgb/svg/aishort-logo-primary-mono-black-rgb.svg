@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 256" width="1024" height="256" role="img" aria-label="AiShort">
+  <!-- 横版 lockup · mark 180 · 图字间距 64 = 0.36x mark · 字标宽锁 652 -->
+  <g>
+    <path fill="#8A9296" transform="translate(64.0,38.0) scale(0.17578125)" d="M 192.0 112.0 L 352.0 112.0 A 80.0 80.0 0 0 1 432.0 192.0 L 432.0 352.0 A 80.0 80.0 0 0 1 352.0 432.0 L 192.0 432.0 A 80.0 80.0 0 0 1 112.0 352.0 L 112.0 192.0 A 80.0 80.0 0 0 1 192.0 112.0 Z"/>
+    <path fill="#8A9296" transform="translate(64.0,38.0) scale(0.17578125)" d="M 672.0 112.0 L 832.0 112.0 A 80.0 80.0 0 0 1 912.0 192.0 L 912.0 352.0 A 80.0 80.0 0 0 1 832.0 432.0 L 672.0 432.0 A 80.0 80.0 0 0 1 592.0 352.0 L 592.0 192.0 A 80.0 80.0 0 0 1 672.0 112.0 Z"/>
+    <path fill="#8A9296" transform="translate(64.0,38.0) scale(0.17578125)" d="M 192.0 592.0 L 352.0 592.0 A 80.0 80.0 0 0 1 432.0 672.0 L 432.0 832.0 A 80.0 80.0 0 0 1 352.0 912.0 L 192.0 912.0 A 80.0 80.0 0 0 1 112.0 832.0 L 112.0 672.0 A 80.0 80.0 0 0 1 192.0 592.0 Z"/>
+    <path fill="#14171A" transform="translate(64.0,38.0) scale(0.17578125)" d="M 672.0 592.0 L 832.0 592.0 A 80.0 80.0 0 0 1 912.0 672.0 L 912.0 832.0 A 80.0 80.0 0 0 1 832.0 912.0 L 672.0 912.0 A 80.0 80.0 0 0 1 592.0 832.0 L 592.0 672.0 A 80.0 80.0 0 0 1 672.0 592.0 Z"/>
+  </g>
+  <text x="308" y="192" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="176" font-weight="650" textLength="652" lengthAdjust="spacingAndGlyphs" fill="#14171A">AiShort</text>
+</svg>

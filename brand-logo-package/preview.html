@@ -1,0 +1,420 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AiShort 标志系统 · 交互预览</title><style>
+:root{--paper:#F5F8F7;--ink:#14171A;--primary:#0B6E62;--accent:#F2A33C;
+--line:#E2E8E7;--card:#FFFFFF;--muted:#5C6669;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+font-family:Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;font-size:15px;line-height:1.7;}
+.wrap{max-width:1160px;margin:0 auto;padding:40px 28px 80px;}
+header.top{display:flex;align-items:center;gap:18px;padding-bottom:8px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+header.top .mk{width:56px;height:56px;flex:0 0 56px;}
+h1{font-size:26px;margin:0;letter-spacing:-.4px;}
+.sub{color:var(--muted);font-size:14px;margin:2px 0 0;}
+h2{font-size:19px;margin:0 0 4px;letter-spacing:-.2px;}
+section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin:22px 0;}
+.sechead{display:flex;align-items:baseline;gap:10px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:18px;}
+.secnum{font-size:12px;font-weight:700;color:#fff;background:var(--primary);border-radius:20px;padding:2px 9px;}
+.note{color:var(--muted);font-size:13px;margin:0 0 14px;}
+.grid{display:grid;gap:16px;}
+.g2{grid-template-columns:repeat(2,1fr);} .g3{grid-template-columns:repeat(3,1fr);}
+.g4{grid-template-columns:repeat(4,1fr);} .g5{grid-template-columns:repeat(5,1fr);}
+.tile{border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;
+align-items:center;justify-content:center;gap:10px;background:var(--card);min-height:120px;}
+.tile .cap{font-size:12px;color:var(--muted);text-align:center;}
+.tile.light{background:#F5F8F7;} .tile.dark{background:#14171A;border-color:#14171A;}
+.tile.dark .cap{color:#93A0A3;} .tile.dark .wm{color:#fff;}
+.tile svg{max-width:100%;height:auto;}
+.wm{font-weight:650;letter-spacing:-.6px;}
+.kpi{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--card);}
+.kpi b{display:block;font-size:24px;letter-spacing:-.5px;color:var(--primary);}
+.kpi span{font-size:12px;color:var(--muted);}
+table{border-collapse:collapse;width:100%;font-size:13.5px;}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;}
+th{background:#F0F4F3;font-weight:650;}
+code{background:#F0F4F3;padding:1px 5px;border-radius:4px;font-size:12.5px;}
+pre{background:#F7FAF9;border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;
+font-size:12px;line-height:1.45;margin:8px 0;}
+.sw{display:flex;gap:0;border-radius:10px;overflow:hidden;border:1px solid var(--line);}
+.sw div{flex:1;height:70px;display:flex;align-items:flex-end;justify-content:center;
+font-size:11px;padding-bottom:6px;font-weight:600;}
+.mock{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;}
+.browser{background:#DEE3E6;padding:10px 12px 0;}
+.tab{display:inline-flex;align-items:center;gap:7px;background:#fff;border-radius:8px 8px 0 0;
+padding:7px 12px;font-size:12px;font-weight:600;}
+.bar{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);}
+.bar .links{margin-left:auto;display:flex;gap:16px;font-size:12px;color:var(--muted);}
+.phone{background:#1B1F22;border-radius:22px;padding:14px;}
+.phonepad{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:16px 10px 26px;}
+.appic{border-radius:14px;overflow:hidden;}
+.appname{font-size:10px;color:#C9D1D3;text-align:center;margin-top:4px;font-family:Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif}
+.cardbg{background:#fff;padding:22px;}
+.strip{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.hero{background:#14171A;padding:44px 34px;border-radius:12px;}
+.hero .t{color:#fff;font-size:30px;font-weight:650;letter-spacing:-1px;}
+.hero .s{color:#9BA7AA;font-size:14px;margin-top:8px;}
+.watermark{position:relative;background:#F5F8F7;}
+.watermark .bgmark{position:absolute;right:-30px;bottom:-50px;width:280px;opacity:.10;}
+.dont{opacity:.55;}
+.dont::after{content:"✕";color:#C0392B;font-weight:700;margin-left:8px;}
+ul{margin:6px 0 0 18px;padding:0;} li{margin:3px 0;}
+</style></head><body><div class="wrap">
+<header class="top"><div style="width:56px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-only : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-only-m-u10" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u10)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div><h1>AiShort 标志系统</h1>
+<p class="sub">方向「切角卡片 · The Shortcut」· v1.0 提案预览 · 比例系统 整数比 + 8pt 网格</p></div></header>
+
+<section><div class="sechead"><span class="secnum">01</span><h2>Hero 主标</h2></div>
+<p class="note">一张提示词卡片，右上角沿 45° 抄近道切掉一块；被切下的三角沿切边镜像翻折进卡内，成为点亮的琥珀折片。
+斜边 452.5 &lt; 直角路径 640——捷径不是比喻，是三角形不等式。</p>
+<div class="grid g2">
+<div class="tile light" style="min-height:260px"><div style="width:200px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-only : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-only-m-u11" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u11)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div class="cap">纯图形 mark · 1024 viewBox · 零字体依赖</div></div>
+<div class="tile light" style="min-height:260px"><div style="width:300px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 256" width="1024" height="256" role="img" aria-label="AiShort">
+  <!-- 横版 lockup · mark 180 / 字标 cap ≈128 · 图字间距 60 = 0.33×mark高 · 字标宽锁定 660 -->
+  <g><mask id="m-h-u12" maskUnits="userSpaceOnUse" x="0" y="0" width="4096" height="4096"><path fill="#FFFFFF" d="M 100 38 L 154 38 L 244 128 L 244 182 A 36 36 0 0 1 208 218 L 100 218 A 36 36 0 0 1 64 182 L 64 74 A 36 36 0 0 1 100 38 Z"/><path fill="#000000" d="M 154 38 L 244 128 L 154 128 Z"/></mask><path fill="#0B6E62" d="M 100 38 L 154 38 L 244 128 L 244 182 A 36 36 0 0 1 208 218 L 100 218 A 36 36 0 0 1 64 182 L 64 74 A 36 36 0 0 1 100 38 Z" mask="url(#m-h-u12)"/><path fill="#F2A33C" d="M 230.5 114.5 L 167.5 114.5 L 167.5 51.5 Z"/></g>
+  <text x="304" y="192" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="176" font-weight="650" textLength="660" lengthAdjust="spacingAndGlyphs" fill="#14171A">AiShort</text>
+</svg></div>
+<div class="cap">横版组合标（网站页眉 / README 头图）</div></div></div></section>
+
+<section><div class="sechead"><span class="secnum">02</span><h2>组合 Lockup 矩阵</h2></div>
+<p class="note">同一几何在 6 种组合、明/暗两种底色下的表现。字标字体：Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif</p>
+<div class="grid g2">
+<div class="tile light"><div style="width:96px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-only : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-only-m-u0" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u0)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div class="cap">纯图形 icon-only</div></div><div class="tile dark"><div style="width:96px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-only : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-only-m-u1" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u1)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div class="cap">纯图形 icon-only（深底）</div></div><div class="tile light"><div class="strip"><div style="width:56px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-only : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-only-m-u2" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u2)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div class="wm" style="font-size:40px;color:#14171A;font-weight:650;letter-spacing:-0.6px;">AiShort</div></div><div class="cap">图形 + 英文字标（横版主标）</div></div><div class="tile dark"><div class="strip"><div style="width:56px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-only : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-only-m-u3" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u3)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div class="wm" style="font-size:40px;color:#fff;font-weight:650;letter-spacing:-0.6px;">AiShort</div></div><div class="cap">图形 + 英文字标（横版主标）（深底）</div></div><div class="tile light"><div class="strip"><div style="width:56px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-only : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-only-m-u4" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u4)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div class="wm" style="font-size:34px;font-family:'PingFang SC','Microsoft YaHei',sans-serif">AI 提示词库</div></div><div class="cap">图形 + 中文字标（AI 提示词库）</div></div><div class="tile dark"><div class="strip"><div style="width:56px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-only : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-only-m-u5" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u5)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div class="wm" style="font-size:34px;color:#fff;font-family:'PingFang SC','Microsoft YaHei',sans-serif">AI 提示词库</div></div><div class="cap">图形 + 中文字标（AI 提示词库）（深底）</div></div><div class="tile light"><div class="strip"><div style="width:60px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-only : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-only-m-u6" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u6)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div><div class="wm" style="font-size:38px;color:#14171A;font-weight:650;letter-spacing:-0.6px;">AiShort</div><div style="font-size:13px;color:#5C6669;letter-spacing:2px;font-family:'PingFang SC',sans-serif">AI 提示词库</div></div></div><div class="cap">图形 + 双语横排</div></div><div class="tile dark"><div class="strip"><div style="width:60px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-only : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-only-m-u7" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u7)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div><div class="wm" style="font-size:38px;color:#fff;font-weight:650;letter-spacing:-0.6px;">AiShort</div><div style="font-size:13px;color:#93A0A3;letter-spacing:2px;font-family:'PingFang SC',sans-serif">AI 提示词库</div></div></div><div class="cap">图形 + 双语横排（深底）</div></div><div class="tile light"><div style="text-align:center"><div style="width:72px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-only : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-only-m-u8" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u8)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div style="height:10px"></div><div class="wm" style="font-size:34px;color:#14171A;font-weight:650;letter-spacing:-0.6px;">AiShort</div><div style="font-size:12px;color:#5C6669;letter-spacing:2px;font-family:'PingFang SC',sans-serif">AI 提示词库</div></div><div class="cap">图形 + 双语竖排</div></div><div class="tile dark"><div style="text-align:center"><div style="width:72px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-only : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-only-m-u9" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u9)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div style="height:10px"></div><div class="wm" style="font-size:34px;color:#fff;font-weight:650;letter-spacing:-0.6px;">AiShort</div><div style="font-size:12px;color:#93A0A3;letter-spacing:2px;font-family:'PingFang SC',sans-serif">AI 提示词库</div></div><div class="cap">图形 + 双语竖排（深底）</div></div><div class="tile light"><div class="wm" style="font-size:46px;color:#14171A;font-weight:650;letter-spacing:-0.6px;">AiShort</div><div class="cap">纯字标 wordmark（窄空间）</div></div><div class="tile dark"><div class="wm" style="font-size:46px;color:#fff;font-weight:650;letter-spacing:-0.6px;">AiShort</div><div class="cap">纯字标 wordmark（窄空间）（深底）</div></div>
+</div></section>
+
+<section><div class="sechead"><span class="secnum">03</span><h2>缩放墙 16 → 2048px</h2></div>
+<p class="note">小尺寸为真实光栅输出（PNG），非矢量缩放模拟——这是能不能用的唯一凭证。</p>
+<div class="strip" style="align-items:flex-end;gap:26px">
+<div style="text-align:center"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAfElEQVR42mNgGHSAkY9HgVlG0gGGGdnZBIjWzKwg682dl/QfGYMM0ZXnNiDKAA4f5/XYDHg80+I9UYZwBHvtx2bAp8U2/4kyBJ8BRBmCzQBWA+0C5EDFG7DYDMCGQYYMUgNYTfWriTEAlNhwBiTIEJBLsGJgOgElNobhBQCdI5hSvTV32QAAAABJRU5ErkJggg==" width="16" height="16" style="image-rendering:auto;" alt="mark 16px"/><div class="cap">16px</div></div><div style="text-align:center"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA2ElEQVR42mNgGAWjYLADRnY2AVYD7QJ2L6fVHMFe+9Exm515P80sZxIVMuBKj3nPnZf0HxcGOYJmDuBKCLuPz3JkB3TEKPXzc7EIUM1yZhlJB0KWIztgW5Xu/qMthuep5ghyHPBpsc1/qjmCXAdQzRGUOIAqjqDUARQ7glQHgHIByBHoGCROFwdQHRDrAFBBha2EpLjEJNYBxGKSQ2rUAaMOoLYDQO0JktsC1HQAqFFDclkACjZqWA4qK0AtK7KaY5Q6AtSoAYUmxU0zUJogB4+2qkfBKCAEAF6BXGFtAEofAAAAAElFTkSuQmCC" width="32" height="32" style="image-rendering:auto;" alt="mark 32px"/><div class="cap">32px</div></div><div style="text-align:center"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAA/ElEQVR42u3YMQrCQBCF4QhR2cRK7JIDWNiIIAgewMJGJKSy2VqFeAYvInbewzPY6w28QHS6FIJx2Znd4Pth68xHEhImCBBCCKEfa49HhcqW13ivyzrHm8FbvTiNdP6oO7h3AJPhq4Ck301dPjYHk+GrgNNueFlNB5kTgNqsbzYAz/O8dIIwHf4TwAnCNkAcwQEQRXABxBCcABEEN4AdIQFgRdgAbBdJQYhvh+WLbQPgtL8GeIEHAAAAAAAAgEYDIp3fpYen5Zk1QGc2OUoDaANo72coDJXpYsvk0LW8WS2aDE/X4vktfd8Jepw43glantEGEOtzhBBCqCm9AAPwSeZsn3wjAAAAAElFTkSuQmCC" width="48" height="48" style="image-rendering:auto;" alt="mark 48px"/><div class="cap">48px</div></div><div style="text-align:center"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABc0lEQVR42u3aPUoDQRTA8c2Hu5FNpSBCkmKLgNZ+gEGLgIXCtrGxUWsjeAhTBjyC2KXzEl7BA3gDayHmtWlkd2fmvdX/H+YA78c6weFFERERERFR9VqtpD3MJkVPo5v26z13Nsg3r/L39OFuWeYIQj0nbzY3ksvxouzgtQfo5OdvVYevLUA8OnhyMfw6wOw6m/e2Ett3QqOTbLsafh3gZbq3+Hg++jSN0N4f3vgE+Ho9XZpGcHHx/QZgGiEUgFmEkAAmEUIDmEPQADCFoAVgBkETwASCNoA6ggUAVQQrAGoIPgHuL3qPglDkyD9QfwagFgHgGCA+O56XeUtUe2N0DeD6eP+iAAAAAAAAAAAAAAAAAID/CRCPDmeWAWRTxe9exO7OidXhZVMlyJtAlZUYn0fWdcLsCHTTQTq9/bY0vNxNYfcEVpeNFQRZ15GdpfDbIqsvQfvPQdZ11N8J5WKUXwf5DEMd2VSRdZ2IiIiIiIiIivUDyw1wuGSMlXYAAAAASUVORK5CYII=" width="64" height="64" style="image-rendering:auto;" alt="mark 64px"/><div class="cap">64px</div></div><div style="text-align:center"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAACcElEQVR42u3csUobcRzA8QvJaXIK3QqVWkFBLJIhXVqkhWqd2kVSOgTUQhEal4JjOwl9CB+ge8euvoVbH8DR4m5zdCsUczHN3f3/nw/8HsD7fe8uidwlCQAAAAAAAAAAAAD8T821lb25p73TWUzz4YOXjngFtLobw/bb1+cLnz7czHLyCBz9Mhe/vjpYOD68nvXiBVCyRpoulnHGC6AK9/jRfTcbHlyVvXwBlLT8KixeACXJjgaXdQjgxeN7vh1MWxXu+eMG8Ln/6PTHl+65rU3v0r9TteXfFsCvb89vRDAlnf3+RR0DEME0zv7lpd0qLn/cAERwR/PbW2d1D0AEd1DV5RcNQAQT/dbbykIKQAQFpb3Nk9ACEEEB+QEOMQARCEAEAhCBAEQgABEIQAQCEIEARCAAEQhABAIQgQBEIAARCEAEAog8AgFEHoEAIo9AAJFHIIDII6hrAPmzgXkEs5pgn0WsawAIAAEgAARAwAHkL62Y1TsJo3yPYdUDqPrU/golAAEIQAAWKQAjACMAIwAjACMAIwAjACMAIwAjACMAIwAjACMAIwAjACMAIwABCEAAAhBAfbW6Gx8tMvJH1yxy8mmurewJIOJJQjD37MlXy5zswdUgAsifcLXQ4jP6/DRMQpHXbKkF5vjwOgmJq0DBs399dZCEpv3m1XfLjeje71ZQfLLhwVUjTReDDaDRad/P3r/7adn/+N5f91fCjBuBK8FfZ/7R4DKK5ftMENk9f5xvB7FeDTr7/YvR37+T8CeEWH4xnN/eOmsuL+3a+i3/Razy+/uKTtrbPElarcxmAQAAAAAAAAAAAAAAgMn9BgBS6TIyBcFoAAAAAElFTkSuQmCC" width="128" height="128" style="image-rendering:auto;" alt="mark 128px"/><div class="cap">128px</div></div><div style="text-align:center"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAGmElEQVR42u3dS2tUBxjHYc9kJnPTRU0i1mojoSS0TmuCNpFEDVhivVBCk1JjDFYtEfHShW6kBXHj0kVdiRQUpF/ARTeCIt10o5tSv0E3IkW6sIiodYRSSgu2dmbOmXmfB/5foD3vz8wkmSxZAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8O8lSbIkl8tbikuSnAeRpsn1vLaue2zkbPeW0fPlhZm71S8OPeukvTgi4E/5oYH54raJS9UTh5522sELAPzTV/PlUm/3+IZz1aP7H3b60QsA/HH4pWJPcdv4xUhHLwDwXGGkdjLq4QsAcd/Y61s+XN47fSf68QsA8d7gGxzY4/AFgICK2yevOnoBIKDS7K6bDl4AcPwmAIQ5/pmdNxy6ABBQ9+SmC45cAAioa+2a3Q688QG4drp23dNFpiXLlvZXTxx84sAbH4Bfrkw8/u7Ld296yvCmX9AA/Hp18zMRIJPygwNzDrv5ARABMqmyOH/PYbcmACJAphRGaqccdWsDIAJk51//IwsPHHXrAyACpP/avza06KDTC4AIkKry3PRtB51uAESAVCTVyirHnI0AiAAtV//UXsecnQCIAC1Vmt11yzFnKwAiQMs45GwGQARoutyK3o0OObsBEAGaqjA6fMYhZzsAIoA3AIMHQARoiuLU1isOuT0CIAI0nM/3b68AiAANVTm8775Dbq8AiAANUz1+4JFDbr8AdEwEkiTnCtMNwGOH3J4B6IgI+FBVARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAEQgMAREAABEIDAERAAARCAwBEQAAGIFID7lyce1SPQibt2unZdAARAABAAARAABEAABAABEAABQAAEQAAQAAEQAARAAAQA//0EQAAEAAEQAAFAAARAABAAARAABCDzAejKdb94iO3VhwCYr6AQABMABMAEAAEwAUAATAAQABMABMAEAAEwAUAATAAQABMABMAEAAEwAUAATAAQABMABMAEAAEwAUAATAAQABMAAfAgmgAIgJkACICZAAiAmQAIgJkACICZAAiAmQAIgJkACICZAAiAmQAIgJkACICZAAiAmQAIgJkACICZAAiAmQAIgJkACICZAAiACQACYAKAAJgAIAAmAAiACQACYAKAAJgAIAAmAAiACQACYAKAAJgAIAAmAPynABz77DcPoqUWgCRJXGGKKp/P/exBtNQCQLpKn+z+3oNoAhBU9+Smrz2IJgBRAzA2ctaDaGmsvDBz1wWmrDBSO+lhtDTWvWX0vAtMWVKtvO5htFQC8PyrTxeYhW8FehgtheV6Xlvn+jKgOLXlsgfSWroTh566vKy8D7D+neMeSmvlitsmLrm8rMjl8h5Ka+XyQwPzDi9LLwM+nPzWg2kt2dH9D11cxnT1r97h4bSWvPs/vuGci8ug8r6Pf/SAWrOXlEu9ri2D8m+tnfWAWnPf/Bu/6NKy/FXApx/94EG1pv3rXyr2uLIsf0NgZd+YB9WasfqPnbuwdviOwAebv/HAWkN/8Wfv9B2X1U4vBRZmfvLgWsN+7Ldv+bCraqeXAs//h3lwrSE/9DM4sMdFtePPBrz5xpQH2P7Xu/7bJ6+6pDZWeO/tYx5ke5WVZnfddEGdEIH313/lgTbH7ysBD7e9/Phndt5wMd4TsIg/5z+56YJL6fDvDvgWof39Az4OPulau2a3C/HDQhbw9X6ybGm/q4j21cDKvjG/OxB3lcX5e/nBgTmXEFz9twj9KnGgwz+y8KAwUjvlyeevbxL2r97hk4U6+Of556Zv52tDi550XvLaIJevf9CoTxvuiNf3t+qf359UK6s82LyS+h8fqf8qaP1Bqv8twvofJH3xV4nrf5r8+IHHluoeVQ7vu1//bb3i1NYr9f9HhdHhM7kVvRs9uQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQcb8Dek50lgO8g7kAAAAASUVORK5CYII=" width="256" height="256" style="image-rendering:auto;" alt="mark 256px"/><div class="cap">256px</div></div>
+</div>
+<div class="grid g2" style="margin-top:20px">
+<div class="tile light"><img src="data:image/png;base64,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AANAMgBkBIABIBkARoARAAaAZAAYAYABIBkARgBgAEgGgBEAGACSAWAEAAaADAADwAgADAAZAAaAEQAYADIADAAjADAAZAAYAEYAYADIADAAjADAAJABYAAYAYABIAPAADACAANABoCMAMAAkAEgIwAMAMkAkBEABoBkAMgIAANAMgBkBIABIBkAMgLAAJAMABkBYABIBoCMADAAJANARgAYAJIBICMADAAZAAaAjAAwAGQATKIfjS38aWUEqPZ68HDXU22t5R5XGgwAGQAEJiqX2ir5XwIMABkAGAGAASADACMAMABkAGAEAAaADACMAMAAkAGAEQAYADIAMALAAPAYyQDACAADQDIAMALAAJAMAIwAMAAkAwAjAAwAyQDACAADQDIAMALAAJAMAIwAMAAkAwAjAAwAGQAGAEYAGAAyAMAIAANABgAYAWAAyAAAIwAMABkAYASAASADAIwAMABkAIARAAaADAAwAsAAUJUUd3ceqowAaaqLuxaNRcXCbK8ABoAk+Q4UGACSZACAASBJBgAYAJJkAIABIEkGABgAkmQAgAEgSQYAGACSZACAASBJBgAYAJJkAIABIEkGABgAkmQAgAEgSQYAGACSZACAASBJBgAYAJJkAIABIMkAMAAwABwCSQYAGACSZACAASBJBgAYAJJkAIABIEkGABgAkmQAgAEgSQYAGACSZACAASBJBgAYAJJkAIABIEkGABgAkmQAgAEgSQYAGACSZACAASBJBgAYAJJkAIABIEkGAAaAASDJAAADQJIMADAAJMkAAANAkgwAMAAkyQAAA0CSDAAwACTJAAADQJIMADAAJMkAAANAkgwAMAAkyQAAA0CSDAAwACTJAAADQJIMADAAJMkAAANAkgwAMAAkyQAAA0CSAQAGgCQZAGAASJIBAAaAJBkAYABIkgEABoAkGQBgAEiSAQAGgCQZAGAASJIBAAaAJBkAYABIkgEABoAkGQBgAEiSAQAGgCQZAGAASJIBAAaAJBkAYABIkgEABoAkAwAMAEkyAMAAkCQDAAwASTIAwACQJAMADABJMgDAAJAkAwAMAEkyAMAAkCQDAAwASTIAwACQJAMADABJMgDAAJAkAwAMAEkyAMAAkCQDAAwASTIAwACQJAMADABJBoBXAANAkgwAMAAkyQAAA0CSDAAwACTJAAADQJIMADAAJMkAAANA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" width="512" height="512" style="image-rendering:auto;" alt="mark 512px"/><div class="cap">512px</div></div>
+<div class="tile light"><img src="data:image/png;base64,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N7nj2Pc9BiQZAAwARgAAgBSL5s/bXD4/9orHgCQDgAHACABZ+QlQGPtHAMjiALDo6l0eApIMAAYAIwBkR5DL1fpXAMiguKPtkIeAJAOAAcAIABkaAIqFJv8KAFkcAJZ3jHoISDIAGACMAJChASApXeVfASCLA8CqrjMeApIMAAYAIwBkaACoLS/wrwCQQbk13b/iISDJAGAAMAJAhgaA+to2/woAWRwA1q68y0NAkgHAAGAEgAwNAA11S/wrAGRxAOhd9Q4PAUkGAAOAEQCyI2yob/evAJDJAWD13R4CkgwABgAjAGRqAOjwrwBgAJAkA4ABwAgAaR8AGg0AAAYASTIAGACMAGAAAMAAIEkGAAOAEQAMAAAYACTJAGAAMAKAAQAAA4AkGQAMAEYAMAAAYACQJAOAAcAIAAYAAAwAkmQAMAAYAcAAAIABQJIMADICgAEAAAOAJBkAZAQAAwCAAcAAIMkAYACQEQADAAAGAEkyABgAjABuDBgAADAASJIBwABgBAADAAAGAEkyABgAjABgAADAACBJBgADgBEADAAAGAAkyQBgADACgAEAAAOAJBkAPMqNAGAAAMAAIEkGABkBwAAAgAFAkgHAACAjAAYAAAwAkmQAMADICIABAAADgCQZAAwAMgJgAADAACBJBgADgBEADAAAGAAkyQBgADACgAEAAAOAJBkADABGADAAAGAAkCQDgAHACAAGAAAMAJJkAJARAAwAABgAJMkAICMABgADAIABQJIMAAYAGQEwAABgAJAkA4ABQEYADAAAGAAkyQBgAJARAAMAAAYASTIAGACMAEYADAAAGAAkyQBgADACgAEAAAOAJBkADABGADAAAGAAkCQDgIwAYAAAwAAgSQYAGQHAAABgAPAQkGQAMADICIABAAADgCQZAAwAMgJgAADAACBJBgADgIwAGAAAMABIkgHAACAjAAYAAAwAkmQAMADICIABAAADgCQZAAwARgAwAABgAJAkA4CMAGAAAMAAIEkGABkBwAAAgAFAkgHAACAjAAYAAAwAkmQAMADICIABAAADgCQZAAwAMgJgAADAACBJBgADgIwAGAAAMABIkgHAACAjAAYAAAwAkmQAMADICIABAAADgCQZAAwARgAjAAYAAAwAkmQAkBEADAAAGAAkyQAgIwAGAP8KAAYASTIAGABkBMAAAIABQJIMAAYAGQEwAABgAJAkA4ABQEYADAAAGAAkyQBgAJARAAMAAAYASTIAGABkBMAAAIABQJIMAAYAGQEwAABgAJAkA4BkBMAAAIABQJIMADICgAEAwADgISDJAGAAkBEAAwAABgBJMgAYAGQEwAAAgAFAkgwABgAZATAAAGAAkCQDgAFARgAMAAAYACTJAGAAkBEAAwAABgBJMgAYAGQEwAAAgAFAkgwAkhEAAwAABgBJMgBIRgAMAAAYACQZAAwAkhHAAACAAUCSDAAGABkBMAAAYACQJAOAAUBGAAwAABgAJMkAYACQEQADAAAGAEkyABgAZATAAACAAUCSDAAGABkBMAAAYACQJAOAAUBGAAwAABgAJMkAIBkBMAAAYACQJAOAZAQwAABgAJAkA4ABQDICGAAAMABIkgHAACAjAAYAAAwAkmQAMADICIABAAADgCQZAAwAMgJgAADAACBJBgADgIwAGAAAMABIkgHAACAjAAYAAAwAkmQAkIwAGAAAMABIkgFAMgJgAAAwAHgISDIAGAAkI4ABAAADgCQZAAwAkhHAAACAAUCSDAAGAMkIYAAAwAAgSQYAA4CMABgAADAASJIBwAAgIwAGAAAMAJJkADAAyAiAAQAAA4AkGQAkIwAGAAAMAJJkAJCMABgAADAASDIAGAAkI4ABAAADgCQZAAwAkhHAAACAAUCSDAAGAMkIYAAAwAAgSQYAA4BkBDAAAGAAkCQDgAFARgA3MQMAAAYASTIAGABkBMAAAIABQJIMAAYAGQEwAABgAJAkA4BkBMAAAIABQJIMAJIRwAAAgAFAkgwABgDJCGAAAMAAIEkGAAOAZAQwAABgAJAkA4ABQDICGAAAMABIkgHAACAZAQwAABgAJMkAYACQjAAGAAAMAJJkADAAyAiAAQAAA4AkGQAkIwAGAAAMAJJkAJCMABgAAAwAHgOSDAAGAMkIYAAAwAAgSQYAA4BkBDAAAGAAkCQDgAFAMgIYAAAwAEiSAcAAIBkBDAAAGAAkyQBgAJCMAAYAAAwAkmQAMABIRgADAAAGAEkyAEhGACOAAQAAA4AkGQAkIwAGAAAMAJIMAAYAyQhgAADAACBJBgADgGQEMAAAYACQJAOAAUAyAhgAADAASJIBwAAgGQEMAAAYACTJAGAAkIwABgAADACSZAAwAEhGAAMAAAYASTIAGAAkI4ABAAADgCQZACQZAQwAABgAJMkAIBkBDAAAGAAkyQBgAJCMAAYAAAwAkmQAMABIRgADAAAGAEkyABgAJCOAAQAAA4AkGQAMAJIRwAAAgAFAkgwABgDJCGAAAMAAIEkGAAOAZAQwAABgAJAkA4AkI4ABAAADgCQZACQZAQwAAAYASTIAGAAkI0A2RgADAIABQJIMAAYAyQiQgRHAAABgAJAkA4ABQFIGRgADAIABQJIMAAYASRkYAQwAAAYASTIAGAAkZWAEMAAAGAAkyQBgAJCUgRHAAABgAJAkA4ABQFIGRgADAIABQJIMAAYASRkYAQwAAAYASTIAGAAkZWAEMAAAGAAkyQAwg+zpnb2vMgJImuL6Wt+5Yf3CkwYAAAwAkmQAANIuCvPRgpatBgAADACSZAAAjAAGAAAMAJJkAACMAAYAAAwAkmQAAIwABgAADACSZAAAjAAGAAAMAJJkAACMAAYAAAwAkmQAALI+AhgAAAwAkmQAAMjACGAAADAASJIBACADI4ABAMAAIEkGAIAMjAAGAAADgCQZAAAyMAIYAAAMAJJkAADIwAhgAAAwAEiSAQAgAyOAAQDAACBJBgCADIwABgAAA4AkGQAAMjACGAAADACSZAAAyMAIYAAAMABIkgEAIAMjgAEAwAAgSQYAgAyMAAYAAAOAJBkAADIwAhgAAAwAkmQAAMjACGAAADAASJIBACADI4ABAMAAIEkGAIAMjAAGAAADgCQZAAAyMAIYAAAMAJJkAADIwAhgAAAwAEiSAQAgAyOAAQDAACBJBgCADIwABgAAA4AkGQAAMjACGAAADACSZAAAyMAIYAAAMABIkgEAIAMjgAEAwAAgSQYAgAyMAAYAAAOAJBkAADIwAhgAAAwAkmQAAMjACGAAADAASJIBACADI4ABAMAAIEkGAIAMjAAGAAADgCQZAAAyMAIYAAAMAJJkAADIwAhgAAAwAEiSAQAgAyOAAQDAACBJBgCADIwABgAAA4AkGQAAMjACGAAADACSZAAAyMAIYAAAMABIkgEAIAMjgAEAwAAgSQYAgAyMAAYAAAOAJBkAADIwAhgAAAwAkmQAAMjACGAAADAASJIBACADI4ABAMAAIEkGAIAMjAAGAAADgCQZAAAyMAIYAAAMAJKUqYq7t3+qMgJIUtaKO9uH3YIBDACSJEnyCSgADACSJEkyAABgAJAkSZIBAAADgCRJkgwAABgAJEmSZAAAwAAgSZIkAwAABgBJkiQZAAAwAEiSJMkAAGAAcBBKkiQZAAAwAEiSJMkAAIABQJIkSQYAAAwAkiRJMgAAYACQJEmSAQAAA4AkSZIMAAAYACRJkmQAAMAAIEmSJAMAAAYASZIkAwAABgBJkiQZAAAwAEiSJMkAAIABQJIkSQYAAAwAkiRJMgAAYACQJEmSAQAAA4AkSZIMAAAYACRJkmQAAMAAIEmSZAAAwAAgSZIkAwAABgBJkiQZAAAwAEiSJMkAAIABQJIkSQYAAAwAkiRJMgAAYACQJEmSAQAAA4AkSZIMAAAYACRJkmQAADAAOAglSZIMAAAYACRJkmQAAMAAIEmSJAMAAAYASZIkGQAAMABIkiTJAACAAUCSJEkGAAAMAJIkSTIAAGAAkCRJkgEAAAOAJEmSAQAAA4AkSZIMAAAYACRJkmQAAMAAIEmSJAMAAAYASZIkGQAAMABIkiTJAACAAUCSJEkGAAAMAJIkSTIAAGAAkCRJMgAAYACQJEmSAQAAA4AkSZIMAAAYACRJkmQAAMAAIEmSJAMAAAYASZIkGQAAMABIkiTJAACAAUCSJEkGAAAMAJIkSTIAABgAHIaSJEkGAAAMAJIkSTIAAGAAkCRJkgEAAAOAJEmSDAAAGAAkSZJkAADAACBJkiQDAAAGAEmSJBkAADAASJIkyQAAgAFAkiTJAACAAUCSJEkGAAAMAJIkSTIAAGAAkCRJkgEAAAOAJEmSDAAAGAAkSZJkAADAACBJkiQDAAAGAEmSJBkAADAASJIkGQAAMABIkiTJAACAAUCSJEkGAAAMAJIkSTIAAGAAkCRJkgEAAAOAJEmSDAAAGAAkSZJkAADAACBJkiQDAAAGAEmSJBkAAAwAkiRJMgAAYACQJEmSAQAAA4AkSZIMAAAYACRJkmQAAMAAIEmSJAMAAAYASZIkGQAAMABIkiTJAACAAUCSJEkGAAAMAJIkSQYAAAwAkiRJMgAAYACQJEmSAQAAA4AkSZIMAAAYACRJkmQAAMAAIEmSJAMAAAYASZIkGQAAMABIkiTJAACAAUCSJMkAAIABQJIkSQYAAAwAkiRJMgAAYACQJEmSAQAAA4AkSZIMAAAYACRJkmQAAMAAIEmSJAMAAAYASZIkGQAAMABIkiTJAABgAJAkSZIBAAADgCRJkgwAABgAJEmSZAAAwAAgSZIkAwAABgBJkiQZAAAwAEiSJMkAAIABQJIkSQYAAAwAkiRJMgAAYACQJEkyAABgAJAkSZIBAAADgCRJkgwAABgAJEmSZAAAwAAgSZIkAwAABgBJkiQZAAAwAEiSJMkAAIABQJIkSQYAAAwAkiRJBgAADACSJEkyAABgAJAkSZIBAAADgCRJkgwAABgAJEmSZAAAwAAgSZIkAwAABgBJkiQZAAAwAEiSJMkAAIABQJIkSQYAAAOAJEmSDAAAGAAkSZJkAADAACBJkiQDAAAGAEmSJBkAADAASJIkyQAAgAFAkiRJBgAADACSJEkyAABgAJAkSZIBAAADgCRJkgEAAAOAJEmSDAAAGAAkSZJkAADAACBJkiQDAAAGAEmSJBkAADAASJIkyQAAgAFAkiRJBgAADACSJEkyAABgAJAkSTIAAGAAkCRJkgEAAAOAJEmSDAAAGAAkSZJkAADAACBJkiQDAAAGAEmSJBkAADAASJIkyQAAgAFAkiRJBgAADACSJEkyAAAYACRJkmQAAMAAIEmSJAMAAAYASZIkGQAAMABIkiTJAACAAUCSJEkGAAAMAJIkSTIAAGAAkCRJkgEAAAOAJEmSDAAABgADgCRJkgEAAAOAJEmSDAAAGAAkSZJkAADAACBJkiQDAAAGAEmSJBkAADAASJIkyQAAgAFAkiRJBgAADACSJEkyAABgAJAkSTIAAGAAkCRJkgEAAAOAJEmSDAAAGAAkSZJkAADAACBJkiQDAAAGAEmSJBkAADAASJIkyQAAgAFAkiRJBgAADACSJEkGAAMAgAFAkiRJBgAADACSJEkyAABgAJAkSZIBAAADgCRJkgwAABgAJEmSZAAAwAAgSZIkAwAABgBJkiQZAAAwAEiSJMkAAGAAMABIkiRlagDYaAAAyOgAsOodDkJJkqRMDQC/4xYMkMUBYO3KuxyEkiRJGRoANvTe4xYMkMUBYE33nQ5CSZKk7JRb1/Mut2CADIpXdp12EEqSJGVoAOhdfbdbMEAWB4DlHSMOQkmSpAwNAGu673QLBsjiANDRdtBBKEmSlJ3iFcuOuwUDZFC08OqbHYSSJEkZGgCWLj7iFgyQxQFg/rxN5fNjrzgMJUmSslG06OpdbsEAGRTObe5Nzhx73mEoSZKUgc6P/ShqmbfJLRggiwNAU+Py5MTAUw5ESZKk9JecGf5eOGd2j1swQAYFdbWLkrHDX3MgSpIkZWAAON7/ZDirodMtGCCLA0CxMLs0tP8RB6IkSVL6K40c+kpQW17gFgyQRVFUKB3e8zkHoiRJUgYGgIG9DwaFfINLMEBGFffs+LQDUZIkKf0VD9zyjzVBELkBA2RUfuuGex2IkiRJ6a+wa8vH3H4BMizXu+rtDkRJkqT0l9/Y+9tuvwAZFne0HXIgSpIkpb94RedJt1+ADAuvmru+fG70JYeiJElSirsw/lrUOn+72y9AlgeAxoZlyfH+bzoYJUmS0ltyauiZsLlptdsvQIYFxcLs0uC+hx2MkiRJ6a00cvCxoJxc7fYLkOkFIAiLe3d9xsEoSZKU3oqHd/9LTRTmXX4BMi5/w7o/cjBKkiSlt8KOG/7crReAmrh76biDUZIkKb3lela8za0XgP/3lwDO+ksAkiRJKf0LAK9GrfN3uPUCUBPU17YlY4e/5oCUJElK4V8AON7/ZDirocutF4CamigqFA/t/mcHpCRJUgr/AkD/3i8E+XyDSy8Al+S3brjXASlJkpTCLwDcteVjbrsA/ETc1XHMASlJkpTCLwC8pvuC2y4APxHOmd2TnB5+ziEpSZKUos6OvhS1zN3otgvATwSlYnNpcN/DDkpJkqQU/f7/yMHHgtryArddAH5G5ffDHJSSJEnpqdi3829rgiBy0wXgZ8QrO085KCVJklL0+/+9q97ulgvAz/nx9wA867CUJElKxe//vxi1zNvklgvAzwkK+cbK34l1YEqSJKXg9/+HD3wpSEpXueUC8Avlt254vwNTkiRp5le4ectH3W4B+KWixQv7yhfGX3VoSpIkzezirvZht1sAfqmgvnZxMnr4cYemJEnSzC053v+tcFZDl9stAK+zAARhYff2Tzo4JUmSZm7Ffbv+viYK8y63ALyuuHvpmINTkiRp5pZbs+KtbrUA/J/CWQ2dye1Hv+HwlCRJmoEf/z85+J2wuekat1oALmMBCHPFvh33OUAlSZJm4Mf/D9zyDzVxVHSpBeCyxMv9GoAkSZKP/wOQ/g8BNNR3JGNHvu4QlSRJmkEf/z8x8O1w9qyVbrMAXL7KXwPYteXjDlJJkqQZ9PH/vp331YS+/R+ANyhavPC28vmxlx2mkiRJM6AL46/Fne1DbrEAvPEPASSleaXB/Y84UCVJkqq/0sjBx4K62oVusQC8Kfn1a+9xoEqSJFV/+S3r3+f2CsCbFs5pWpOcHHzaoSpJklTFX/535tjz0fx5m9xeAXjzojBf3L39Uw5WSZKkKv7yv327PlsTx4nLKwBXtgEsWbi3fG70hw5XSZKkqvzyv1fjrvZht1YArlhQLDSVjvY94ICVJEmqwi//G9r/aFBOWtxaAZgQudXLzztgJUmSqq/cddf8utsqABP3KYC62kWlYwe/7JCVJEmqoi//GzvyRNjYsMxtFYAJlV/X81sOWkmSpOopf+O6P3ZLBWDChbMaOpPxI084bCVJkqrgp/8nBr4dNjdd45YKwOR8CmDz9e914EqSJE1/hZs2fagmCEI3VAAm51MATY3dye1Hv+HQlSRJmsaf/p8cfDqc13yd2ykAk/spgBuu/0MHryRJ0jT+9H/75g/XBEHkZgrA5H4KYFZDl+8CkCRJmrbf/X8qnDt7rVspAFPzKYANa+9xAEuSJE3DN/9vWf8+v/sPwJQJ6uuWlEYOPuYQliRJmsKf/o8feSJsalzuNgrAlMqtWfHW8oXx1xzGkiRJU1NuXc+73UIBmPpPAZSKc0tH+v7dYSxJkjT5lYb2PxLUllvdQgGYFnFH26Hy2ZEXHcqSJEmT2Lmxl+Pupbe7fQIwfXJxubB7+ycdzJIkSZNXce+uzwT5XL3LJwDTKrxqzrrKn6NxOEuSJE3CF/+dHn4uWtByk1snAFUhv37texzQkiRJE1/+xnV/UhMGsRsnAFUhKCctpaN9DzikJUmSJvSL/x4N6mvb3DYBqCrRkoV7kzPHnndYS5IkTUBnR34QL1sy4JYJQBUuAGG+sG3jBx3YkiRJV15h15aP18Rx4pIJQFWqfEStNLjvYYe2JEnSFXz0f+TQV8JZDV1ulwBUtbij7YBfBZAkSbqCj/53dYy4VQJQ/aIwn9+y/n0OcEmSpDfx0f+dN3zER/8BmDGCcjK/dHjPvzrEJUmS3sBH/wf2PRTU1y12mwRgZn0QoHX+9uTk4Hcc5pIkSf93yenh56LFrX1ukQDMSLm1K+8qnxt72aEuSZL0Ol0YfzW/ruc3a4IgcoMEYEYK8rm6wlu2/qWDXZIk6ZdX3LPjb4JCvtHtEYCZPQJU/jTg0ds+73CXJEn6Bb/3P3zgi2FT43K3RgBSIWptuSk5MfCUQ16SJOmnfu//1NB3o8Wte9wWAUiVeMWyE+U7Rl5w2EuSJF3s7OhLuZ4Vb6t8YNJNEYCUfQwgKuQ3XfcH5Qvjrzn0JUlS1stv2/iBmlxcdkkEIJUqX25TuGXbJxz6kiQp01/617fz/qBYbHY7BCDdI0BteUHx4K3/5PCXJEmZ/NK/o7d9PmysX+pWCEAmhHNm95SG9n/RJUCSJGXqS/9GDz8etczd6DYIQKZErfO3J8f7v+UyIEmSMvH4Pzn4tG/8ByCz4vZFB5JTQ8+4FEiSpFQ//k8PPxd3tg+5/QGQ7RFg+dLRyqHociBJklL5+D9z7Pnc6uXnaoIgdPMDINuCIKocipXD0SVBkiSlqrMjP8j1rr67JgrzLn0AUBGGudzalXcldxz7vsuCJElKx+N/9MXcup5318RR0WUPAH5aFBUqC3n5jpEXXBokSdIMf/y/lF+/9j01cZy45AHA64wAPgkgSZJm8k/+Pf4B4HJHgMqvA/hOAEmSNNO6Y+SF3PU97/L4B4DLVflOgMoXA/rrAJIkaSZ923/vqnf4nX8AeKOCILr0JwJPDT3jUiFJkqr68X96+Nnc6uVna0Lf9g8Ab1rcvuhAcrz/Wy4XkiSpKh//JwefjjvbB2uCIHRzA4ArFLXO314a2v9FlwxJklRNlUYPfzVqa93ttgYAEyicM7unePDWf3LZkCRJVfH4P9L3QNgyd4NbGgBMgqC2vKBwy7ZPlC+Mv+biIUmSpqti3477wsb6DrczAJjMEaCQb8xvuu4PKn9mxwVEkiRNaWdHX8xv3XBvUCzMdisDgKkQRYV4xbITyYmBp1xGJEnSlHzZ36mhZ3Jruu+siePEZQwApnoHaG25qXT0ts+7lEiSpEn9ff+h/Y9EbQtudfsCgGkU1Ne2Fd6y9S/L58ZedkGRJEkT2vnxV4q7t/91OKuh060LAKphBMjn6nJrV96VnBz8jsuKJEmakI/8nx56Nnf9mt+ofP+Q2xYAVJmodf720uE9/+rSIkmSrugj//17/+PSR/6DIHTDAoBq/TRAOZmf37L+fcmZY8+7wEiSpDfUHSMvFLZv/nBQV7vIrQoAZsRHAcJ83NF2oDS472GXGUmSdFk/9T928Mtx55KBmjgquUwBwEz7NEDlCwK3bfygTwNIkqTX/an/zhv+ImysX+r2BAAz/NMA0ZKFe0tH+x5wyZEkST/zU/+BfQ/FSxcf9lN/AEjTpwHKSUt+/dr3JCcGnnLhkSQp49/wf2romfzm694b1JVb3ZIAIKXCq+asK+ze/sny2ZEXXYAkScpY50Z/WOzbeX909VU3+oZ/AMiCXFyOO9oOlY70/Xv5wvhrLkSSJGXh4/57H4y72oeDXK7OZQgAMiYoFefm1qx4a2nk4GMuRpIkpfTj/qOHH89du/rXKn8q2O0HALI+BNTXLclvWHtPMn7kCRclSZJS8vC/vf+bld/z9+3+AMDPCWc1dOVvuP4Pk9uPfsPFSZKkGfrwP97/ZH7rhnvD2bNWud0AAK8/BDQ1duc3X/9enwiQJGkm/cT/6DfyW9a/P2xuuqYmCAI3GgDg8oeAWQ2d+XU9v1U6dvDLLlaSJFXpl/uNHvpqfuO1v1sZ8C8e3x7+AMCbF9TVLsqtXn6+dLTvgcqfD3LZkiRpmjs/9qPKt/rnelb+atBQt8RtBQCY2CGgWGiKlizcW9y9/VPJycGnXcAkSZrij/mfGvpusW/n/XFH28GgVJzjdgIATK4ozIdzmtbk16+9pzS4/5Hy+bGXXcokSZq0n/a/Uho+8KX8put+P5zXfG1NFBVcRgCAKRckpXnR4oW3FXZt+XgyduTrLmqSJE3Yl/r9Z+HWmz4Rty86EJST+W4dAECVLAFBGDbUd8TLl44V+3bc508JSpL05v6EX/G2m/8uXtl5qvJlvBfP18glAwCoXmGYq1xa4u6lY4Xd2z+ZjB5+vHxh/FUXO0mS/r8ujL9W+QRdcc+OT1989J+89E3+UZh3mQAAZp4gCIP62sXR4oV9+a0b3l/q3/uF5PTwsy59kqTM/pT/zPB/lwb2PVTYtvHPovZF+8OGuvaaMIhdGgCAdO0BhXxjOGd2T+WjjYVdWz5WGtz3cHJ6+DkXQklSih/83ysN7X+0cMu2v8qtXn42nNvcW/nLOm4FAEC2BoFSsfnSINDVcSy/dcO9xUO7/zkZO/y18tnRl1waJUkzrnOjP0zGjjxROrznc4VtGz9Y+XW4Sw/+UnGuUx8A4KdFUSGor20Lr5q7/uKlaTx/w7o/Ku7d9ZlLnxQ43v/Nixcrw4AkqToe+sf7nywN7X+kuO8tn83fuP5P4xXLTkQt8zYFDXVLauKo6FAHAHijKt8jUCzMDhsbll0aBjraDuV6V7390icG9uz4dOWnLJULWOWTA8mJgaeSM8eer/zNZBdUSdIb7uL5kdxx7PvJycH/qnw5X+Wj+6Uje/6t2Lfz/vy2jR/IXbv67njp4qNhy9wNlS+8rXySrXJOOawBAKZC5VMDxcLsoK52UdjUuLzyUcto/rxN0cKrb4472g7GyztG4pVdp3Nruu/MrV15V6531TtyvavvliRltYvnQOU8WNP9K/GqrjMXz4nRyrgcLbp618XzY3PlHKl8G3/lE2mXHviRn+YDAAAAAAAAAAAA/G97cEAAAAAAIOT/64YEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL4CvfJP2aGmKvkAAAAASUVORK5CYII=" width="1024" height="1024" style="image-rendering:auto;" alt="mark 1024px"/><div class="cap">1024px</div></div></div>
+<div style="margin-top:16px" class="grid g2">
+<div><div class="cap" style="margin-bottom:6px">16px ASCII 实测（# 主卡 · O 琥珀折片 · + 半调）</div><pre>................
+................
+.....+++........
+....####+.......
+...+####+O......
+...+####+OO.....
+...+####+OOO....
+...+####+++++...
+...+#########+..
+...+#########+..
+...+#########+..
+...+#########...
+....++++++++....
+................
+................
+................</pre></div>
+<div><div class="cap" style="margin-bottom:6px">32px ASCII 实测</div><pre>................................
+................................
+................................
+................................
+................................
+.........+######+...............
+........#########...............
+.......##########.+.............
+.......##########.OO............
+.......##########.OOO...........
+.......##########.OOOO..........
+.......##########.OOOOO.........
+.......##########.OOOOOO........
+.......##########.+OOOOO+.......
+.......##########...............
+.......###################+.....
+.......####################.....
+.......####################.....
+.......####################.....
+.......####################.....
+.......####################.....
+.......####################.....
+.......###################+.....
+.......###################......
+........#################.......
+................................
+................................
+................................
+................................
+................................
+................................
+................................</pre></div></div></section>
+
+<section><div class="sechead"><span class="secnum">04</span><h2>关键尺寸标注</h2></div>
+<div class="grid g2">
+<div><table><tr><th>参数</th><th>值</th><th>来源 / 比例</th></tr>
+<tr><td>画布</td><td>1024 × 1024</td><td>基准单位 U = 8px</td></tr>
+<tr><td>卡片边长 B</td><td>640</td><td>80U</td></tr>
+<tr><td>圆角 R</td><td>128</td><td>B:R = 5:1</td></tr>
+<tr><td>切角 CUT</td><td>320</td><td>B:CUT = 2:1 · CUT:R = 5:2</td></tr>
+<tr><td>折缝 GAP</td><td>48</td><td>R:GAP = 8:3</td></tr>
+<tr><td>折片直角边</td><td>224</td><td>CUT − 2×GAP</td></tr>
+<tr><td>斜边（捷径）</td><td>452.5</td><td>320√2 &lt; 640 直角路径</td></tr>
+<tr><td>折片面积占比</td><td>8.56%</td><td>点缀色纪律 &lt;10%</td></tr>
+<tr><td>光学配平偏移</td><td>(20.5, -20.5)</td><td>质心补偿 40%</td></tr>
+</table></div>
+<div><div style="border:1px solid var(--line);border-radius:12px;overflow:hidden"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1404 1404" width="1404" height="1404" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect width="1404" height="1404" fill="#FBFCFC"/>
+<line x1="190" y1="190" x2="190" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="190" x2="1214" y2="190" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="254" y1="190" x2="254" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="254" x2="1214" y2="254" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="318" y1="190" x2="318" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="318" x2="1214" y2="318" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="382" y1="190" x2="382" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="382" x2="1214" y2="382" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="446" y1="190" x2="446" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="446" x2="1214" y2="446" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="510" y1="190" x2="510" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="510" x2="1214" y2="510" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="574" y1="190" x2="574" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="574" x2="1214" y2="574" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="638" y1="190" x2="638" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="638" x2="1214" y2="638" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="702" y1="190" x2="702" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="702" x2="1214" y2="702" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="766" y1="190" x2="766" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="766" x2="1214" y2="766" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="830" y1="190" x2="830" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="830" x2="1214" y2="830" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="894" y1="190" x2="894" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="894" x2="1214" y2="894" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="958" y1="190" x2="958" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="958" x2="1214" y2="958" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="1022" y1="190" x2="1022" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="1022" x2="1214" y2="1022" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="1086" y1="190" x2="1086" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="1086" x2="1214" y2="1086" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="1150" y1="190" x2="1150" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="1150" x2="1214" y2="1150" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="1214" y1="190" x2="1214" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="190" y1="1214" x2="1214" y2="1214" stroke="#E6EBEA" stroke-width="1"/>
+<line x1="632.5318464911691" y1="271.46815350883094" x2="1132.531846491169" y2="771.4681535088309" stroke="#B7C4C7" stroke-width="1" stroke-dasharray="6 5"/>
+<line x1="722.5318464911691" y1="681.4681535088309" x2="1042.531846491169" y2="361.46815350883094" stroke="#D9A65A" stroke-width="1" stroke-dasharray="4 4"/>
+<g opacity="0.16">  <mask id="aishort-mark-mark-only-m-u13" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>  </mask>  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u13)"/></g>
+<path fill="none" stroke="#0B6E62" stroke-width="2.5" d="M 530.5318464911691 361.46815350883094 L 722.5318464911691 361.46815350883094 L 1042.531846491169 681.4681535088309 L 1042.531846491169 873.4681535088309 A 128.0 128.0 0 0 1 914.5318464911691 1001.4681535088309 L 530.5318464911691 1001.4681535088309 A 128.0 128.0 0 0 1 402.53184649116906 873.4681535088309 L 402.53184649116906 489.46815350883094 A 128.0 128.0 0 0 1 530.5318464911691 361.46815350883094 Z"/>
+<path fill="none" stroke="#F2A33C" stroke-width="2.5" d="M 994.5318464911692 633.4681535088309 L 770.5318464911691 633.4681535088309 L 770.5318464911691 409.46815350883094 Z"/>
+<path stroke="#7C8A8D" stroke-width="1.4" d="M 514.5318464911691 489.46815350883094 L 546.5318464911691 489.46815350883094 M 530.5318464911691 473.46815350883094 L 530.5318464911691 505.46815350883094"/>
+<circle cx="530.5318464911691" cy="489.46815350883094" r="128.0" fill="none" stroke="#7C8A8D" stroke-width="1" stroke-dasharray="3 4"/>
+<path stroke="#7C8A8D" stroke-width="1.4" d="M 514.5318464911691 873.4681535088309 L 546.5318464911691 873.4681535088309 M 530.5318464911691 857.4681535088309 L 530.5318464911691 889.4681535088309"/>
+<circle cx="530.5318464911691" cy="873.4681535088309" r="128.0" fill="none" stroke="#7C8A8D" stroke-width="1" stroke-dasharray="3 4"/>
+<path stroke="#7C8A8D" stroke-width="1.4" d="M 898.5318464911691 873.4681535088309 L 930.5318464911691 873.4681535088309 M 914.5318464911691 857.4681535088309 L 914.5318464911691 889.4681535088309"/>
+<circle cx="914.5318464911691" cy="873.4681535088309" r="128.0" fill="none" stroke="#7C8A8D" stroke-width="1" stroke-dasharray="3 4"/>
+<line x1="402.53184649116906" y1="1001.4681535088309" x2="1042.531846491169" y2="1001.4681535088309" stroke="#3D4448" stroke-width="1.4"/>
+<line x1="398.53184649116906" y1="1001.4681535088309" x2="406.53184649116906" y2="1001.4681535088309" stroke="#3D4448" stroke-width="1.4"/><line x1="402.53184649116906" y1="997.4681535088309" x2="402.53184649116906" y2="1005.4681535088309" stroke="#3D4448" stroke-width="1.4"/>
+<line x1="1038.531846491169" y1="1001.4681535088309" x2="1046.531846491169" y2="1001.4681535088309" stroke="#3D4448" stroke-width="1.4"/><line x1="1042.531846491169" y1="997.4681535088309" x2="1042.531846491169" y2="1005.4681535088309" stroke="#3D4448" stroke-width="1.4"/>
+<text x="722.5318464911691" y="1035.468153508831" font-size="19" fill="#3D4448" text-anchor="middle" font-weight="600">B = 640 (80U)</text>
+<line x1="722.5318464911691" y1="361.46815350883094" x2="1042.531846491169" y2="361.46815350883094" stroke="#3D4448" stroke-width="1.4"/>
+<line x1="718.5318464911691" y1="361.46815350883094" x2="726.5318464911691" y2="361.46815350883094" stroke="#3D4448" stroke-width="1.4"/><line x1="722.5318464911691" y1="357.46815350883094" x2="722.5318464911691" y2="365.46815350883094" stroke="#3D4448" stroke-width="1.4"/>
+<line x1="1038.531846491169" y1="361.46815350883094" x2="1046.531846491169" y2="361.46815350883094" stroke="#3D4448" stroke-width="1.4"/><line x1="1042.531846491169" y1="357.46815350883094" x2="1042.531846491169" y2="365.46815350883094" stroke="#3D4448" stroke-width="1.4"/>
+<text x="882.5318464911691" y="345.46815350883094" font-size="19" fill="#3D4448" text-anchor="middle" font-weight="600">CUT = 320 (40U)</text>
+<line x1="1042.531846491169" y1="681.4681535088309" x2="1042.531846491169" y2="1001.4681535088309" stroke="#3D4448" stroke-width="1.4"/>
+<line x1="1038.531846491169" y1="681.4681535088309" x2="1046.531846491169" y2="681.4681535088309" stroke="#3D4448" stroke-width="1.4"/><line x1="1042.531846491169" y1="677.4681535088309" x2="1042.531846491169" y2="685.4681535088309" stroke="#3D4448" stroke-width="1.4"/>
+<line x1="1038.531846491169" y1="1001.4681535088309" x2="1046.531846491169" y2="1001.4681535088309" stroke="#3D4448" stroke-width="1.4"/><line x1="1042.531846491169" y1="997.4681535088309" x2="1042.531846491169" y2="1005.4681535088309" stroke="#3D4448" stroke-width="1.4"/>
+<text x="1118.531846491169" y="841.4681535088309" font-size="19" fill="#3D4448" text-anchor="middle" font-weight="600">320</text>
+<line x1="402.53184649116906" y1="361.46815350883094" x2="402.53184649116906" y2="489.46815350883094" stroke="#3D4448" stroke-width="1.4"/>
+<line x1="398.53184649116906" y1="361.46815350883094" x2="406.53184649116906" y2="361.46815350883094" stroke="#3D4448" stroke-width="1.4"/><line x1="402.53184649116906" y1="357.46815350883094" x2="402.53184649116906" y2="365.46815350883094" stroke="#3D4448" stroke-width="1.4"/>
+<line x1="398.53184649116906" y1="489.46815350883094" x2="406.53184649116906" y2="489.46815350883094" stroke="#3D4448" stroke-width="1.4"/><line x1="402.53184649116906" y1="485.46815350883094" x2="402.53184649116906" y2="493.46815350883094" stroke="#3D4448" stroke-width="1.4"/>
+<text x="350.53184649116906" y="425.46815350883094" font-size="19" fill="#3D4448" text-anchor="middle" font-weight="600">R=128</text>
+<text x="708.5318464911691" y="711.4681535088309" font-size="17" fill="#F2A33C" text-anchor="end" font-weight="600">折片直角边 = 224 = CUT − 2×GAP</text>
+<text x="706.5318464911691" y="345.46815350883094" font-size="17" fill="#F2A33C" text-anchor="end" font-weight="600">GAP = 48（折缝，仅两直角边）</text>
+<text x="1058.531846491169" y="721.4681535088309" font-size="17" fill="#0B6E62" font-weight="600">斜边 = 320√2 = 452.5 &lt; 直角路径 320+320 = 640（捷径本义）</text>
+<text x="190" y="164" font-size="18" fill="#3D4448" font-weight="600">比例系统：整数比 + 8pt 模块网格（B:R=5:1 · B:CUT=2:1 · CUT:R=5:2 · R:GAP=8:3）</text>
+<text x="190" y="138" font-size="18" fill="#3D4448" font-weight="600">光学配平：质心(460.7, 563.3) → 补偿 40% = (20.5, -20.5)</text>
+</svg></div>
+<div class="cap" style="margin-top:8px">blueprint 数学标注图（尺寸链 / 圆心十字标 / 相切与镜像关系）</div></div>
+</div></section>
+
+<section><div class="sechead"><span class="secnum">05</span><h2>变体家族（6 色变体）</h2></div>
+<div class="grid g3">
+<div class="tile light"><div style="width:260px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 256" width="1024" height="256" role="img" aria-label="AiShort">
+  <!-- 横版 lockup · mark 180 / 字标 cap ≈128 · 图字间距 60 = 0.33×mark高 · 字标宽锁定 660 -->
+  <g><mask id="m-h-u14" maskUnits="userSpaceOnUse" x="0" y="0" width="4096" height="4096"><path fill="#FFFFFF" d="M 100 38 L 154 38 L 244 128 L 244 182 A 36 36 0 0 1 208 218 L 100 218 A 36 36 0 0 1 64 182 L 64 74 A 36 36 0 0 1 100 38 Z"/><path fill="#000000" d="M 154 38 L 244 128 L 154 128 Z"/></mask><path fill="#0B6E62" d="M 100 38 L 154 38 L 244 128 L 244 182 A 36 36 0 0 1 208 218 L 100 218 A 36 36 0 0 1 64 182 L 64 74 A 36 36 0 0 1 100 38 Z" mask="url(#m-h-u14)"/><path fill="#F2A33C" d="M 230.5 114.5 L 167.5 114.5 L 167.5 51.5 Z"/></g>
+  <text x="304" y="192" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="176" font-weight="650" textLength="660" lengthAdjust="spacingAndGlyphs" fill="#14171A">AiShort</text>
+</svg></div><div class="cap">① 主标 横版 fullcolor</div></div>
+<div class="tile light"><div style="width:170px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" width="720" height="720" role="img" aria-label="AiShort">
+  <!-- 竖排 lockup · mark 288 / 字标 cap ≈109 · 图字间距 96 = 0.33×mark高 · 字标宽锁定 560 -->
+  <g><mask id="m-v-u15" maskUnits="userSpaceOnUse" x="0" y="0" width="4096" height="4096"><path fill="#FFFFFF" d="M 273.6 96 L 360 96 L 504 240 L 504 326.4 A 57.6 57.6 0 0 1 446.4 384 L 273.6 384 A 57.6 57.6 0 0 1 216 326.4 L 216 153.6 A 57.6 57.6 0 0 1 273.6 96 Z"/><path fill="#000000" d="M 360 96 L 504 240 L 360 240 Z"/></mask><path fill="#0B6E62" d="M 273.6 96 L 360 96 L 504 240 L 504 326.4 A 57.6 57.6 0 0 1 446.4 384 L 273.6 384 A 57.6 57.6 0 0 1 216 326.4 L 216 153.6 A 57.6 57.6 0 0 1 273.6 96 Z" mask="url(#m-v-u15)"/><path fill="#F2A33C" d="M 482.4 218.4 L 381.6 218.4 L 381.6 117.6 Z"/></g>
+  <text x="80" y="590" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="150" font-weight="650" textLength="560" lengthAdjust="spacingAndGlyphs" fill="#14171A">AiShort</text>
+</svg></div><div class="cap">② 竖排 stacked</div></div>
+<div class="tile light"><div style="width:110px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-only : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-only-m-u16" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u16)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div class="cap">③ 纯图形 fullcolor</div></div>
+<div class="tile light"><div style="width:260px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 256" width="1024" height="256" role="img" aria-label="AiShort">
+  <!-- 横版 lockup · mark 180 / 字标 cap ≈128 · 图字间距 60 = 0.33×mark高 · 字标宽锁定 660 -->
+  <g><mask id="m-h-u17" maskUnits="userSpaceOnUse" x="0" y="0" width="4096" height="4096"><path fill="#FFFFFF" d="M 100 38 L 154 38 L 244 128 L 244 182 A 36 36 0 0 1 208 218 L 100 218 A 36 36 0 0 1 64 182 L 64 74 A 36 36 0 0 1 100 38 Z"/><path fill="#000000" d="M 154 38 L 244 128 L 154 128 Z"/></mask><path fill="#14171A" d="M 100 38 L 154 38 L 244 128 L 244 182 A 36 36 0 0 1 208 218 L 100 218 A 36 36 0 0 1 64 182 L 64 74 A 36 36 0 0 1 100 38 Z" mask="url(#m-h-u17)"/><path fill="#14171A" d="M 230.5 114.5 L 167.5 114.5 L 167.5 51.5 Z"/></g>
+  <text x="304" y="192" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="176" font-weight="650" textLength="660" lengthAdjust="spacingAndGlyphs" fill="#14171A">AiShort</text>
+</svg></div><div class="cap">④ 单黑 mono-black</div></div>
+<div class="tile dark"><div style="width:260px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 256" width="1024" height="256" role="img" aria-label="AiShort">
+  <!-- 横版 lockup · mark 180 / 字标 cap ≈128 · 图字间距 60 = 0.33×mark高 · 字标宽锁定 660 -->
+  <g><mask id="m-h-u18" maskUnits="userSpaceOnUse" x="0" y="0" width="4096" height="4096"><path fill="#FFFFFF" d="M 100 38 L 154 38 L 244 128 L 244 182 A 36 36 0 0 1 208 218 L 100 218 A 36 36 0 0 1 64 182 L 64 74 A 36 36 0 0 1 100 38 Z"/><path fill="#000000" d="M 154 38 L 244 128 L 154 128 Z"/></mask><path fill="#FFFFFF" d="M 100 38 L 154 38 L 244 128 L 244 182 A 36 36 0 0 1 208 218 L 100 218 A 36 36 0 0 1 64 182 L 64 74 A 36 36 0 0 1 100 38 Z" mask="url(#m-h-u18)"/><path fill="#FFFFFF" d="M 230.5 114.5 L 167.5 114.5 L 167.5 51.5 Z"/></g>
+  <text x="304" y="192" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="176" font-weight="650" textLength="660" lengthAdjust="spacingAndGlyphs" fill="#FFFFFF">AiShort</text>
+</svg></div><div class="cap">⑤ 反白 reversed（深底）</div></div>
+<div class="tile light"><div style="width:260px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 256" width="1024" height="256" role="img" aria-label="AiShort">
+  <!-- 横版 lockup · mark 180 / 字标 cap ≈128 · 图字间距 60 = 0.33×mark高 · 字标宽锁定 660 -->
+  <g><mask id="m-h-u19" maskUnits="userSpaceOnUse" x="0" y="0" width="4096" height="4096"><path fill="#FFFFFF" d="M 100 38 L 154 38 L 244 128 L 244 182 A 36 36 0 0 1 208 218 L 100 218 A 36 36 0 0 1 64 182 L 64 74 A 36 36 0 0 1 100 38 Z"/><path fill="#000000" d="M 154 38 L 244 128 L 154 128 Z"/></mask><path fill="#3D4448" d="M 100 38 L 154 38 L 244 128 L 244 182 A 36 36 0 0 1 208 218 L 100 218 A 36 36 0 0 1 64 182 L 64 74 A 36 36 0 0 1 100 38 Z" mask="url(#m-h-u19)"/><path fill="#8A9296" d="M 230.5 114.5 L 167.5 114.5 L 167.5 51.5 Z"/></g>
+  <text x="304" y="192" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="176" font-weight="650" textLength="660" lengthAdjust="spacingAndGlyphs" fill="#14171A">AiShort</text>
+</svg></div><div class="cap">⑥ 灰阶 grayscale</div></div>
+</div></section>
+
+<section><div class="sechead"><span class="secnum">06</span><h2>应用实景</h2></div>
+<div class="grid g2">
+<div class="mock"><div class="browser"><span class="tab"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAfElEQVR42mNgGHSAkY9HgVlG0gGGGdnZBIjWzKwg682dl/QfGYMM0ZXnNiDKAA4f5/XYDHg80+I9UYZwBHvtx2bAp8U2/4kyBJ8BRBmCzQBWA+0C5EDFG7DYDMCGQYYMUgNYTfWriTEAlNhwBiTIEJBLsGJgOgElNobhBQCdI5hSvTV32QAAAABJRU5ErkJggg==" width="16" height="16" style="image-rendering:auto;vertical-align:middle" alt="mark 16px"/> AiShort — AI 提示词库</span></div>
+<div class="bar"><div style="width:30px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-only : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-only-m-u20" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u20)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div class="wm" style="font-size:19px;color:#14171A;font-weight:650;letter-spacing:-0.6px;">AiShort</div><span class="links"><span>提示词</span><span>扩展</span><span>文档</span><span>GitHub</span></span></div>
+<div style="padding:18px;color:#5C6669;font-size:13px">浏览器标签 + 站点页眉（favicon 为真实 16px 光栅）</div></div>
+<div class="mock"><div class="phone"><div class="phonepad">
+<div><div class="appic"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABc0lEQVR42u3aPUoDQRTA8c2Hu5FNpSBCkmKLgNZ+gEGLgIXCtrGxUWsjeAhTBjyC2KXzEl7BA3gDayHmtWlkd2fmvdX/H+YA78c6weFFERERERFR9VqtpD3MJkVPo5v26z13Nsg3r/L39OFuWeYIQj0nbzY3ksvxouzgtQfo5OdvVYevLUA8OnhyMfw6wOw6m/e2Ett3QqOTbLsafh3gZbq3+Hg++jSN0N4f3vgE+Ho9XZpGcHHx/QZgGiEUgFmEkAAmEUIDmEPQADCFoAVgBkETwASCNoA6ggUAVQQrAGoIPgHuL3qPglDkyD9QfwagFgHgGCA+O56XeUtUe2N0DeD6eP+iAAAAAAAAAAAAAAAAAID/CRCPDmeWAWRTxe9exO7OidXhZVMlyJtAlZUYn0fWdcLsCHTTQTq9/bY0vNxNYfcEVpeNFQRZ15GdpfDbIqsvQfvPQdZ11N8J5WKUXwf5DEMd2VSRdZ2IiIiIiIiIivUDyw1wuGSMlXYAAAAASUVORK5CYII=" width="64" height="64" style="image-rendering:auto;" alt="mark 64px"/></div><div class="appname">AiShort</div></div>
+<div><div class="appic" style="background:#fff"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABc0lEQVR42u3aPUoDQRTA8c2Hu5FNpSBCkmKLgNZ+gEGLgIXCtrGxUWsjeAhTBjyC2KXzEl7BA3gDayHmtWlkd2fmvdX/H+YA78c6weFFERERERFR9VqtpD3MJkVPo5v26z13Nsg3r/L39OFuWeYIQj0nbzY3ksvxouzgtQfo5OdvVYevLUA8OnhyMfw6wOw6m/e2Ett3QqOTbLsafh3gZbq3+Hg++jSN0N4f3vgE+Ho9XZpGcHHx/QZgGiEUgFmEkAAmEUIDmEPQADCFoAVgBkETwASCNoA6ggUAVQQrAGoIPgHuL3qPglDkyD9QfwagFgHgGCA+O56XeUtUe2N0DeD6eP+iAAAAAAAAAAAAAAAAAID/CRCPDmeWAWRTxe9exO7OidXhZVMlyJtAlZUYn0fWdcLsCHTTQTq9/bY0vNxNYfcEVpeNFQRZ15GdpfDbIqsvQfvPQdZ11N8J5WKUXwf5DEMd2VSRdZ2IiIiIiIiIivUDyw1wuGSMlXYAAAAASUVORK5CYII=" width="64" height="64" style="image-rendering:auto;" alt="mark 64px"/></div><div class="appname">AiShort</div></div>
+<div><div class="appic" style="background:#0B6E62"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABc0lEQVR42u3aPUoDQRTA8c2Hu5FNpSBCkmKLgNZ+gEGLgIXCtrGxUWsjeAhTBjyC2KXzEl7BA3gDayHmtWlkd2fmvdX/H+YA78c6weFFERERERFR9VqtpD3MJkVPo5v26z13Nsg3r/L39OFuWeYIQj0nbzY3ksvxouzgtQfo5OdvVYevLUA8OnhyMfw6wOw6m/e2Ett3QqOTbLsafh3gZbq3+Hg++jSN0N4f3vgE+Ho9XZpGcHHx/QZgGiEUgFmEkAAmEUIDmEPQADCFoAVgBkETwASCNoA6ggUAVQQrAGoIPgHuL3qPglDkyD9QfwagFgHgGCA+O56XeUtUe2N0DeD6eP+iAAAAAAAAAAAAAAAAAID/CRCPDmeWAWRTxe9exO7OidXhZVMlyJtAlZUYn0fWdcLsCHTTQTq9/bY0vNxNYfcEVpeNFQRZ15GdpfDbIqsvQfvPQdZ11N8J5WKUXwf5DEMd2VSRdZ2IiIiIiIiIivUDyw1wuGSMlXYAAAAASUVORK5CYII=" width="64" height="64" style="image-rendering:auto;" alt="mark 64px"/></div><div class="appname">AiShort</div></div>
+<div><div class="appic" style="background:#F2A33C"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABc0lEQVR42u3aPUoDQRTA8c2Hu5FNpSBCkmKLgNZ+gEGLgIXCtrGxUWsjeAhTBjyC2KXzEl7BA3gDayHmtWlkd2fmvdX/H+YA78c6weFFERERERFR9VqtpD3MJkVPo5v26z13Nsg3r/L39OFuWeYIQj0nbzY3ksvxouzgtQfo5OdvVYevLUA8OnhyMfw6wOw6m/e2Ett3QqOTbLsafh3gZbq3+Hg++jSN0N4f3vgE+Ho9XZpGcHHx/QZgGiEUgFmEkAAmEUIDmEPQADCFoAVgBkETwASCNoA6ggUAVQQrAGoIPgHuL3qPglDkyD9QfwagFgHgGCA+O56XeUtUe2N0DeD6eP+iAAAAAAAAAAAAAAAAAID/CRCPDmeWAWRTxe9exO7OidXhZVMlyJtAlZUYn0fWdcLsCHTTQTq9/bY0vNxNYfcEVpeNFQRZ15GdpfDbIqsvQfvPQdZ11N8J5WKUXwf5DEMd2VSRdZ2IiIiIiIiIivUDyw1wuGSMlXYAAAAASUVORK5CYII=" width="64" height="64" style="image-rendering:auto;" alt="mark 64px"/></div><div class="appname">AiShort</div></div>
+</div></div><div style="padding:10px 16px;font-size:12px;color:#5C6669">手机桌面 App 图标（明/暗/品牌色/琥珀底）</div></div>
+<div class="mock"><div class="hero"><div style="width:72px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-reversed : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-reversed-m-u21" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-reversed-m-u21)"/>
+  <path fill="#FFFFFF" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div class="t" style="margin-top:14px">5000+ 即用 AI 提示词</div>
+<div class="s">复制 → 粘贴 → 专家级输出。把从会用 AI 到用好 AI 的距离，折成一步。</div></div></div>
+<div class="mock cardbg"><div style="display:flex;justify-content:space-between;align-items:flex-start">
+<div style="width:54px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AiShort">
+  <!-- mark-only : B=640 R=128 CUT=320 GAP=48 比例系统=整数比(8pt) 光学偏移=(20.532,-20.532) -->
+  <mask id="aishort-mark-mark-only-m-u22" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+    <path fill="#FFFFFF" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z"/>
+    <path fill="#000000" d="M 532.532 171.468 L 852.532 491.468 L 532.532 491.468 Z"/>
+  </mask>
+  <path fill="#0B6E62" d="M 340.532 171.468 L 532.532 171.468 L 852.532 491.468 L 852.532 683.468 A 128 128 0 0 1 724.532 811.468 L 340.532 811.468 A 128 128 0 0 1 212.532 683.468 L 212.532 299.468 A 128 128 0 0 1 340.532 171.468 Z" mask="url(#aishort-mark-mark-only-m-u22)"/>
+  <path fill="#F2A33C" d="M 804.532 443.468 L 580.532 443.468 L 580.532 219.468 Z"/>
+</svg></div><div style="text-align:right;font-size:12px;color:#5C6669;line-height:1.6">
+千语 / Qian Yuniao<br>AI Shortcut Prompt · Maintainer<br>github.com/qianyuniao/AI-Shortcut-Prompt</div></div>
+<div style="height:22px"></div>
+<div style="font-size:11px;color:#8A9296">名片正面（净空区 = 主图形高度的 25%）</div></div>
+</div></section>
+
+<section><div class="sechead"><span class="secnum">07</span><h2>色彩与字体规范</h2></div>
+<div class="sw">
+<div style="background:#0B6E62;color:#fff">#0B6E62<br>墨松绿 Primary</div>
+<div style="background:#F2A33C;color:#3D2A00">#F2A33C<br>琥珀 Accent</div>
+<div style="background:#14171A;color:#fff">#14171A<br>炭黑 Ink</div>
+<div style="background:#F5F8F7;color:#3D4448">#F5F8F7<br>冷白底 Paper</div>
+<div style="background:#3FC2A9;color:#04231E">#3FC2A9<br>深底主色</div></div>
+<div class="grid g2" style="margin-top:16px">
+<div><table><tr><th>色值</th><th>HEX</th><th>RGB</th><th>CMYK</th><th>Pantone（近似）</th></tr>
+<tr><td>#0B6E62</td><td><code>#0B6E62</code></td><td>(11, 110, 98)</td><td>(90, 0, 11, 57)</td><td>3295 C（近似，须打样校准）</td></tr><tr><td>#F2A33C</td><td><code>#F2A33C</code></td><td>(242, 163, 60)</td><td>(0, 33, 75, 5)</td><td>136 C（近似，须打样校准）</td></tr><tr><td>#14171A</td><td><code>#14171A</code></td><td>(20, 23, 26)</td><td>(23, 12, 0, 90)</td><td>Black 6 C</td></tr><tr><td>#F5F8F7</td><td><code>#F5F8F7</code></td><td>(245, 248, 247)</td><td>(1, 0, 0, 3)</td><td>7541 C（浅冷灰，近似）</td></tr><tr><td>#3FC2A9</td><td><code>#3FC2A9</code></td><td>(63, 194, 169)</td><td>(68, 0, 13, 24)</td><td>3385 C（近似）</td></tr></table>
+<div class="cap">Pantone 为屏幕取色换算的近似值，专色/周边打样前须人工校准</div></div>
+<div><table><tr><th>字体</th><th>回退链</th></tr>
+<tr><td>英文/数字字标</td><td><code>Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif</code></td></tr>
+<tr><td>中文字标</td><td><code>'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif</code></td></tr>
+<tr><td>字重 / 字距</td><td>650 / −0.012em（AiShort 专用光学收紧）</td></tr></table>
+<div class="cap">正式发布前建议对字标执行「轮廓化描边」，彻底消除字体依赖</div></div></div></section>
+</div></body></html>

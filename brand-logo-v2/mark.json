@@ -1,0 +1,33 @@
+{
+  "brand": {
+    "name_zh": "AiShort",
+    "name_en": "AiShort"
+  },
+  "palette": {
+    "primary":    "#3EB489",
+    "structural": "#43474A",
+    "accent":     "#D2D6D8",
+    "panel":      "#F3F0E8"
+  },
+  "canvas": 100,
+  "min_size_px": 16,
+  "motif": [
+    {
+      "type": "circle", "cx": 50, "cy": 50, "r": 36,
+      "fill": "none", "stroke": "structural", "width": 12
+    },
+    {
+      "type": "polygon",
+      "points": [
+        [50, 70], [42.3, 68.5], [35.9, 64.1], [31.5, 57.7], [30, 50],
+        [31.5, 42.3], [35.9, 35.9], [42.3, 31.5], [50, 30]
+      ],
+      "fill": "primary"
+    },
+    {
+      "type": "line", "x1": 58, "y1": 50, "x2": 72, "y2": 50,
+      "stroke": "structural", "width": 11, "cap": "round"
+    }
+  ],
+  "notes": "Derived from AiShort original logo (static/img/logo.png). High facts: F1 closed contour split by vertical axis, left half solid / right half linear; F2 dominant vertical axis; F3 palette teal #3EB489 + dark structural #43474A + neutral; F4 node-to-mark scale ratio 1:8. Circuit routing (F6) reduced from 6-8 right-angle nodes to one straight round-capped segment: the two end caps are the nodes, the straight path is the shortcut, and everything deleted between them is the shortcut. Gradient (F7) discarded. Revision 2: node pair plus connector collapsed from 3 primitives into 1 round-capped line to survive 16px; ring stroke raised 8->10, solid half radius 29->26 to widen the mid-seam."
+}

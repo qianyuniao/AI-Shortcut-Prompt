@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-11.00 -11.00 122.00 122.00" width="122" height="122" role="img">
+<rect x="-11.00" y="-11.00" width="122.00" height="122.00" fill="#F3F0E8"/>
+<rect x="-11.00" y="-11.00" width="122.00" height="122.00" fill="none" stroke="#43474A" stroke-width="0.6" stroke-dasharray="3 2.5"/>
+<circle cx="50.000" cy="50.000" r="36.000" fill="none" stroke="#43474A" stroke-width="12"/>
+<polygon points="50.000,70.000 42.300,68.500 35.900,64.100 31.500,57.700 30.000,50.000 31.500,42.300 35.900,35.900 42.300,31.500 50.000,30.000" fill="#3EB489" stroke="none" stroke-width="2"/>
+<line x1="58.000" y1="50.000" x2="72.000" y2="50.000" fill="none" stroke="#43474A" stroke-width="11" stroke-linecap="round"/>
+<text x="50.00" y="-3.85" font-family="Helvetica,Arial,sans-serif" font-size="4" fill="#43474A" text-anchor="middle">clear space = X</text>
+</svg>

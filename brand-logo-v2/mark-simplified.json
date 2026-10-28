@@ -1,0 +1,29 @@
+{
+  "brand": {
+    "name_zh": "AiShort",
+    "name_en": "AiShort"
+  },
+  "palette": {
+    "primary":    "#3EB489",
+    "structural": "#43474A",
+    "accent":     "#D2D6D8",
+    "panel":      "#F3F0E8"
+  },
+  "canvas": 100,
+  "min_size_px": 16,
+  "motif": [
+    {
+      "type": "circle", "cx": 50, "cy": 50, "r": 36,
+      "fill": "none", "stroke": "structural", "width": 12
+    },
+    {
+      "type": "polygon",
+      "points": [
+        [50, 70], [42.3, 68.5], [35.9, 64.1], [31.5, 57.7], [30, 50],
+        [31.5, 42.3], [35.9, 35.9], [42.3, 31.5], [50, 30]
+      ],
+      "fill": "primary"
+    }
+  ],
+  "notes": "Simplified variant for 16px and 24px only (favicon, browser extension toolbar, small avatars). The straight shortcut segment is dropped; the split disc - solid left half against a dark ring - is the minimum recognition cue and is the only element that survives at 16px. Ring stroke widened 10->12 so the ring reads at 1.9px. Same primitives, same provenance as mark.json; do not use this variant above 24px."
+}

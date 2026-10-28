@@ -1,0 +1,235 @@
+/* New Card Container Style — B+ design system
+   Card uses hairline border (rgba 0.06) instead of "ghost shadow" for visible definition
+   on the deeper #14171a page background. */
+.showcaseCard {
+  /* 分类三档色（slate 中性兜底）。Base.tsx 拿到 tags 时用内联 style 覆盖成该分类的颜色，
+     所以这里的值只在「无分类卡片」时生效 —— 比在每个 rgb() 里重复写 var(…, fallback) 可读得多。 */
+  --cat-light: 148 163 184;
+  --cat-mid: 100 116 139;
+  --cat-deep: 51 65 85;
+  /* 悬停彗星环的旋转角，靠 custom.css 里的 @property 注册才能平滑动画（见那里注释） */
+  --cat-angle: 0deg;
+
+  border-radius: 6px;
+  border: 1px solid var(--site-color-hairline);
+  /* 复刻参考站 .gp-* 的双层渐变：顶部柔光（radial）+ 135° 底色（linear）。
+     参考站是浅底用 0x66/0x38；本站是 #1d2126 暗底，同样强度会糊成一片色块，
+     压到 .14/.10/.06 才只"染色"不夺走正文对比度。 */
+  background-color: var(--ifm-background-surface-color);
+  background-image: radial-gradient(ellipse 80% 80% at 50% -30%, rgb(var(--cat-light) / 0.14), rgb(var(--cat-light) / 0) 70%),
+    linear-gradient(135deg, rgb(var(--cat-mid) / 0.1), rgb(var(--cat-deep) / 0.06));
+  display: flex;
+  flex-direction: column;
+  contain: layout paint;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.12s var(--site-motion-emphasized), box-shadow 0.12s var(--site-motion-emphasized);
+}
+
+/* Top gradient hairline — only on hover. Replaces the old left-edge inset + bloom.
+   颜色从固定的品牌绿换成卡片自己的分类色：hover 时这条线是"这张卡属于哪个分类"的第一眼信号。 */
+.showcaseCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgb(var(--cat-mid) / 0) 0%, rgb(var(--cat-mid) / 0.9) 50%, rgb(var(--cat-mid) / 0) 100%);
+  opacity: 0;
+  transition: opacity 0.12s var(--site-motion-emphasized);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* 悬停彗星环 —— 复刻参考站 .meteor-ring：一圈沿边框跑的 conic-gradient，
+   用 mask 的 content-box 挖空内部只留 1.5px 边框。参考站固定用品牌青 #22d3ee，
+   本站换成卡片的分类色，让"分类"在 hover 这一刻也成立。 */
+.showcaseCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  padding: 1.5px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: conic-gradient(
+    from var(--cat-angle),
+    rgb(var(--cat-mid) / 0) 0deg,
+    rgb(var(--cat-mid) / 0.3) 30deg,
+    rgb(var(--cat-mid) / 0.95) 70deg,
+    rgb(var(--cat-mid) / 0.3) 110deg,
+    rgb(var(--cat-mid) / 0) 150deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+
+/* mask-composite 是这条技法的地基：不支持的浏览器不会"挖空"，那一层会变成盖住整卡的
+   实心渐变。宁可整个环不画（下方 @supports 关掉），也不能让卡片内容被糊住。 */
+@supports not ((mask-composite: exclude) or (-webkit-mask-composite: xor)) {
+  .showcaseCard::after {
+    display: none;
+  }
+}
+
+@keyframes catOrbit {
+  to {
+    --cat-angle: 360deg;
+  }
+}
+
+.showcaseCard:hover {
+  border-color: rgb(var(--cat-mid) / 0.45);
+  /* 写死的 rgba(0,0,0,.4) 在浅色模式下是一圈过重的黑影；--site-shadow-lg 两个模式各有值 */
+  box-shadow: var(--site-shadow-lg);
+}
+
+.showcaseCard:hover::after,
+.showcaseCard:focus-within::after {
+  opacity: 1;
+  /* 不注册 @property 的浏览器这里只是从 0deg 瞬跳到 360deg —— 环在，但不转，可接受 */
+  animation: catOrbit 2.4s linear infinite;
+}
+
+/* 减少动态效果偏好：环保留静态一圈（opacity 照常过渡），只停掉旋转。
+   直接 display:none 会连带丢掉 hover 的视觉反馈，那才是无障碍上真正需要的部分。 */
+@media (prefers-reduced-motion: reduce) {
+  .showcaseCard:hover::after,
+  .showcaseCard:focus-within::after {
+    animation: none;
+  }
+}
+
+.showcaseCard:hover::before {
+  opacity: 0.7;
+}
+
+.showcaseCard:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+.showcaseCardBody {
+  line-height: 1.55;
+  color: var(--ifm-color-content-secondary);
+  font-size: 13px;
+  flex: 1;
+}
+
+@media (max-width: 767px) {
+  .showcaseCardBody {
+    margin-bottom: 5px;
+  }
+}
+
+/* Title link cascade — B+ keeps card hover quiet:
+   - dormant: colorText (white)
+   - card hovered, link not directly hovered: still colorText (no card-wide tint)
+   - link itself hovered: primary-hi + underline */
+.showcaseCardLink {
+  color: var(--ifm-color-content) !important;
+  text-decoration: none;
+  transition: color 0.12s var(--site-motion-emphasized);
+  /* WCAG 2.2 target-size (>=24px): 垂直内边距扩大点击热区，保持 display:inline 避免破坏 line-clamp */
+  padding: 3px 0;
+}
+
+.showcaseCard:hover a.showcaseCardLink:hover {
+  color: var(--site-color-tag-selected-text) !important;
+  text-decoration: underline !important;
+}
+
+.svgIconFavorite {
+  margin-inline-end: 0.5rem;
+  color: var(--site-color-svg-icon-favorite);
+}
+
+/* Card Actions - Expand clickable area */
+.showcaseCard :global(.ant-card-actions) {
+  display: flex;
+  background-color: transparent;
+}
+
+.showcaseCard :global(.ant-card-actions > li) {
+  flex: 1;
+  margin: 0 !important;
+  display: flex;
+  align-items: stretch;
+}
+
+.showcaseCard :global(.ant-card-actions > li > span) {
+  display: flex;
+  flex: 1;
+  align-items: stretch;
+}
+
+.showcaseCard :global(.ant-card-actions .ant-btn) {
+  width: 100%;
+  height: 100%;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  transition: background-color 0.12s var(--site-motion-emphasized), color 0.12s var(--site-motion-emphasized);
+}
+
+.showcaseCard :global(.ant-card-actions .ant-btn):hover {
+  background-color: rgba(var(--ifm-color-primary-rgb), 0.08);
+  color: var(--site-color-tag-selected-text);
+}
+
+/* Top-right stats: tabular mono for numbers */
+.showcaseCard :global(.ant-statistic-content) {
+  font-family: var(--site-font-mono);
+  font-variant-numeric: tabular-nums;
+  transition: color 0.12s var(--site-motion-emphasized);
+}
+
+/* Card hover "wake-up": all passive icons in card body — lock, drag handle, website link,
+   stat icons (fire/like) and stat numbers — lift to primary-hi together with the card.
+   Excludes .ant-card-actions buttons which have their own per-button hover.
+   HeartFilled (favorite) inline-colored pink in actions stays pink (not in body). */
+.showcaseCard :global(.ant-card-body .anticon) {
+  transition: color 0.12s var(--site-motion-emphasized);
+}
+
+.showcaseCard:hover :global(.ant-card-body .anticon),
+.showcaseCard:hover :global(.ant-statistic-content) {
+  color: var(--site-color-tag-selected-text) !important;
+}
+
+/* ▼ 在 downvotes === 0 时弱化为 icon-only：opacity 0.6, hover 时恢复 1.
+   与详情页 .comp-sheet-vote-icon-only 同语义。 */
+.cardVoteIconOnly {
+  opacity: 0.6;
+  transition: opacity 0.12s var(--site-motion-emphasized);
+}
+
+.cardVoteIconOnly:hover {
+  opacity: 1;
+}
+
+/* 卡内分类标签。--cat-* 由 PromptCardTag 用内联 style 注入（每个标签自己的分类色），
+   这里给出无分类时的中性兜底，并承接 hover 态 —— border 只能写在这里，写进内联就会被
+   内联优先级锁死、hover 永远不变色。 */
+.categoryTag {
+  --cat-light: 148 163 184;
+  --cat-mid: 100 116 139;
+  --cat-deep: 51 65 85;
+  border: 1px solid var(--site-color-hairline);
+  border-inline-start: 0;
+  transition: border-color 0.12s var(--site-motion-emphasized), background-color 0.12s var(--site-motion-emphasized);
+}
+
+.categoryTag:hover {
+  border-color: rgb(var(--cat-mid) / 0.5);
+  /* antd Tag 自带 background，不 !important 压不住 */
+  background-color: rgb(var(--cat-mid) / 0.1) !important;
+  color: var(--ifm-color-content) !important;
+}

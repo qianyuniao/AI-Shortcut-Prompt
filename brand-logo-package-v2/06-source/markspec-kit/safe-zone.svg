@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-31.25 -31.25 162.50 162.50" width="162" height="162" role="img">
+<rect x="-31.25" y="-31.25" width="162.50" height="162.50" fill="#F3F0E8"/>
+<rect x="-31.25" y="-31.25" width="162.50" height="162.50" fill="none" stroke="#0B6E62" stroke-width="0.6" stroke-dasharray="3 2.5"/>
+<rect x="10.938" y="10.938" width="31.250" height="31.250" rx="7.8125" fill="#A9DFD5" stroke="none" stroke-width="2"/>
+<rect x="57.812" y="10.938" width="31.250" height="31.250" rx="7.8125" fill="#A9DFD5" stroke="none" stroke-width="2"/>
+<rect x="10.938" y="57.812" width="31.250" height="31.250" rx="7.8125" fill="#A9DFD5" stroke="none" stroke-width="2"/>
+<rect x="57.812" y="57.812" width="31.250" height="31.250" rx="7.8125" fill="#10997F" stroke="none" stroke-width="2"/>
+<text x="50.00" y="-10.94" font-family="Helvetica,Arial,sans-serif" font-size="4" fill="#0B6E62" text-anchor="middle">clear space = X</text>
+</svg>

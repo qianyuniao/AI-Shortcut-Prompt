@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 256" width="1024" height="256" role="img" aria-label="AiShort">
+  <!-- 横版 lockup · mark 180 / 字标 cap ≈128 · 图字间距 60 = 0.33×mark高 · 字标宽锁定 660 -->
+  <g><mask id="m-h" maskUnits="userSpaceOnUse" x="0" y="0" width="4096" height="4096"><path fill="#FFFFFF" d="M 100 38 L 154 38 L 244 128 L 244 182 A 36 36 0 0 1 208 218 L 100 218 A 36 36 0 0 1 64 182 L 64 74 A 36 36 0 0 1 100 38 Z"/><path fill="#000000" d="M 154 38 L 244 128 L 154 128 Z"/></mask><path fill="#0B6E62" d="M 100 38 L 154 38 L 244 128 L 244 182 A 36 36 0 0 1 208 218 L 100 218 A 36 36 0 0 1 64 182 L 64 74 A 36 36 0 0 1 100 38 Z" mask="url(#m-h)"/><path fill="#F2A33C" d="M 230.5 114.5 L 167.5 114.5 L 167.5 51.5 Z"/></g>
+  <text x="304" y="192" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="176" font-weight="650" textLength="660" lengthAdjust="spacingAndGlyphs" fill="#14171A">AiShort</text>
+</svg>

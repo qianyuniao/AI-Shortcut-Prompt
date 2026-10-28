@@ -1,0 +1,40 @@
+---
+sidebar_label: ब्राउज़र एक्सटेंशन इंस्टॉल करें
+title: AiShort एक्सटेंशन | ChatGPT/Gemini/Claude साइडबार · Chrome/Edge/Firefox इंस्टॉल
+description: ब्राउज़र के साइडबार, पॉपअप या अलग विंडो से AiShort प्रॉम्प्ट का उपयोग करें — ChatGPT, Gemini, Claude के ठीक बगल में। Chrome, Edge, Firefox पर एक-क्लिक इंस्टॉल।
+---
+
+# ब्राउज़र एक्सटेंशन इंस्टॉल करें
+
+AiShort (AI Shortcut Prompt) एक्सटेंशन 5,000+ प्रॉम्प्ट एक्सटेंशन के भीतर ही बंडल करता है और उन्हें **साइडबार, पॉपअप या अलग विंडो** के रूप में ChatGPT, Gemini, Claude, DeepSeek जैसे AI चैट के बगल में खोलता है, जिससे आपको प्रॉम्प्ट कॉपी करने के लिए हर बार aishort.top पर वापस जाने की ज़रूरत नहीं पड़ती। यह Chrome, Edge और Firefox का समर्थन करता है, और `Alt + Shift + S` दबाकर तुरंत बुलाया जा सकता है।
+
+## इंस्टॉलेशन के तरीके
+
+### 1. ऐप स्टोर (अनुशंसित, एक-क्लिक इंस्टॉल)
+
+- **Chrome**: [Chrome Web Store](https://chromewebstore.google.com/detail/ai-short-ai-prompt-shortc/blcgeoojgdpodnmnhfpohphdhfncblnj)
+- **Edge**: [Microsoft Edge Addons](https://microsoftedge.microsoft.com/addons/detail/ai-short-ai-prompt-shor/hnggpalhfjmdhhmgfjpmhlfilnbmjoin)
+- **Firefox**: [Firefox Browser ADD-ONS](https://addons.mozilla.org/firefox/addon/aishort/) (v4.4.0 से Chrome संस्करण के समान; अंतर के लिए [Firefox एक्सटेंशन सेटिंग्स](./firefox-extension-setting) देखें)
+
+### 2. स्टोर नहीं खुल रहा? लोकल इंस्टॉलेशन पैकेज
+
+निम्न में से किसी चैनल से डाउनलोड करें, फिर संबंधित गाइड के अनुसार इंस्टॉल करें:
+
+- **GitHub**: [GitHub Release](https://github.com/qianyuniao/AI-Shortcut-Prompt/releases/latest)
+
+> 📖 इंस्टॉलेशन गाइड: [CRX फ़ाइल](./manual-chrome-extension) · [ZIP फ़ाइल](./manual-chrome-extension-zip)
+
+## इंस्टॉल के बाद
+
+`Alt + Shift + S` दबाकर बुलाएं, या टूलबार आइकन पर क्लिक करें। विस्तृत उपयोग के लिए [उपयोग गाइड](./usage) देखें।
+
+## टैम्परमंकी स्क्रिप्ट (Tampermonkey Script)
+
+एक्सटेंशन फॉर्म के अलावा, हम [**ChatGPT Shortcut Anywhere Script**](https://greasyfork.org/scripts/482907-chatgpt-shortcut-anywhere) भी प्रदान करते हैं।
+टैम्परमंकी एक ब्राउज़र एक्सटेंशन है जो उपयोगकर्ताओं को वेब पेज की कार्यक्षमता बढ़ाने के लिए कस्टम स्क्रिप्ट चलाने की अनुमति देता है।
+
+इस स्क्रिप्ट के माध्यम से, आप किसी भी वेबसाइट पर AiShort साइडबार ला सकते हैं। हालाँकि, कृपया ध्यान दें कि आधिकारिक ChatGPT पृष्ठ पर स्क्रिप्ट इंजेक्शन प्रतिबंधों के कारण, उस पृष्ठ पर स्क्रिप्ट साइडबार के बजाय **पॉपअप** के रूप में चलेगी।
+
+AiShort साइडबार सक्षम करने के बाद, आपको समर्थित वेब पेजों के निचले-दाएँ कोने में एक हरा आइकन स्विच दिखाई देगा। इस आइकन पर क्लिक करके आप साइडबार को चालू या बंद कर सकते हैं। वर्तमान में डिफ़ॉल्ट रूप से ChatGPT, Gemini, Claude, Doubao आदि समर्थित हैं।
+
+![](/img/docs/extension-sidebar.webp)

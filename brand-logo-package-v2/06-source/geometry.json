@@ -1,0 +1,60 @@
+{
+  "concept": "一格之距 One of Many",
+  "version": "2.0",
+  "grid_unit": 8.0,
+  "canvas": 1024.0,
+  "cell": {
+    "B": 320.0,
+    "G": 160.0,
+    "R": 80.0,
+    "M": 112.0
+  },
+  "grid_width": 800.0,
+  "ratios": {
+    "B:R": 4.0,
+    "B:G": 2.0,
+    "G:R": 2.0,
+    "grid:canvas": 0.78125,
+    "M:B": 0.35
+  },
+  "lit_cell": "bottom-right",
+  "area_coverage_pct": 39.06,
+  "negative_space_pct": 60.94,
+  "colors": {
+    "pine": "#0B6E62",
+    "teal": "#10997F",
+    "mist": "#A9DFD5",
+    "ink": "#14171A",
+    "gray": "#8A9296",
+    "white": "#FFFFFF",
+    "paper": "#FFFFFF",
+    "teal_d": "#3FC2A9",
+    "mist_d": "#2F3839",
+    "darkbg": "#14171A",
+    "icon_bg": "#0B6E62",
+    "icon_dim": "#6DA8A1",
+    "icon_lit": "#FFFFFF"
+  },
+  "cells": [
+    {
+      "x": 112.0,
+      "y": 112.0,
+      "lit": false
+    },
+    {
+      "x": 592.0,
+      "y": 112.0,
+      "lit": false
+    },
+    {
+      "x": 112.0,
+      "y": 592.0,
+      "lit": false
+    },
+    {
+      "x": 592.0,
+      "y": 592.0,
+      "lit": true
+    }
+  ]
+}
